@@ -20,9 +20,9 @@
 }
 
 .about-popup {
-    font-size: 40px;
+    font-size: 26px;
+    font-weight: bolder;
     color: white;
-    border: none;
     background-color: transparent;
 }
 
@@ -198,18 +198,33 @@ p[autoTyping]::after {
     width: 100%;
 
 }
-
+.tick-img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 40px;
+}
 .heading-text {
     justify-content: center;
     align-items: center;
-    width: 600px;
-    margin-left: 200px;
-    height: 150px;
+    // height: 150px;
 
-    p {
+    h1 {
         font-size: 60px;
         color: black;
-        font-weight: 900;
+        // font-weight: 700;
+    }
+    div {
+        width: 200px;
+        height: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        border-top: 4px solid black;
+        border-radius: 55%;
+    }
+    p {
+          font-size: 18px;
+          color: black;
     }
 }
 
@@ -223,7 +238,7 @@ p[autoTyping]::after {
 
     b {
         font-size: 35px;
-        color: red;
+        color: black;
         transition: 0.3s;
     }
 
@@ -242,19 +257,18 @@ p[autoTyping]::after {
         b {
             font-size: 38px;
         }
-
-        height: 285px;
+        // height: 285px;
+        border: 1px solid black;
         border-radius: 10px;
-        // background-color: red;
-        background-color: rgba(255, 0, 0, 0.7);
-        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+        background-color: whitesmoke;
+        // box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
 
         b {
             color: black;
         }
 
         p {
-            color: white;
+            color: dimgray;
         }
     }
 }
