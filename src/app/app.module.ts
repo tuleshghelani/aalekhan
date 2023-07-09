@@ -12,6 +12,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+// import { MatRadioGroupModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -30,7 +35,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    FormsModule
+    // MatRadioGroupModule
   ],
   providers: [],
   bootstrap: [AppComponent]
