@@ -1,7 +1,8 @@
 .landing-page {
+    // rgb(254,241,95) primary color
     position: relative;
     height: 100%;
-    background-color: rgba(255, 0, 0, 0.7);
+    background-color: rgb(254, 241, 0, 0.8); //rgba(255, 0, 0, 0.7);
     overflow: hidden;
 }
 
@@ -20,10 +21,10 @@
 }
 
 .about-popup {
-    font-size: 26px;
-    font-weight: bolder;
-    color: white;
-    background-color: transparent;
+    i {
+        font-size: 36px;
+        font-weight: bolder;
+    }
 }
 
 .menu-icon {
@@ -38,10 +39,12 @@
 
 .landing-text {
     h1 {
+        color: black;
         font-size: 40px;
     }
 
     p {
+        color: black;
         font-style: italic;
         font-size: 80px;
         font-weight: 600;
@@ -119,24 +122,29 @@ $animationSpeed: 40s;
 
 .marquee {
     width: 100%;
-    height: 300px;
-    // height: 40px;
+    height: 450px;
+    padding-top: 80px;
+    background-color: black;
     overflow: hidden;
     // position: relative;
 }
 
 .marquee-text {
     p {
-        padding-top: 35px;
+        padding-top: 55px;
         font-size: 100px;
         letter-spacing: 8px;
         padding-bottom: 35px;
-        -webkit-text-stroke: 2px black;
+        -webkit-text-stroke: 2px rgb(254, 241, 95);
         font-family: sans;
-        color: white;
+        color: transparent;
     }
 
     height: 130px;
+
+    span {
+        -webkit-text-stroke: 2px whitesmoke;
+    }
 }
 
 @keyframes marquee {
@@ -153,13 +161,25 @@ $animationSpeed: 40s;
     position: fixed;
     right: 0%;
     bottom: 0%;
-    font-size: 17px;
     font-weight: bold;
-    margin: 20px;
-    color: white;
-    background-color: red;
-    width: 140px;
-    height: 50px;
+    margin: 40px;
+    border-radius: 50%;
+    color: rgb(254, 241, 95);
+    background-color: black;
+    width: 70px;
+    height: 70px;
+    transition: 0.5s;
+    i {
+        font-size: 27px;
+    }
+}
+
+.contact-btn:hover {
+    color: black;
+    width: 75px;
+    height: 75px;
+    border: 2px solid black;
+    background-color: rgb(254, 241, 0, 0.8);
 }
 
 .navbar-area {
@@ -168,16 +188,14 @@ $animationSpeed: 40s;
 }
 
 .nav-link {
-    color: white !important;
     transition: 0.5s;
 }
 
 .nav-link:hover {
-    // border: 0px solid yellow;s
     border-radius: 5px;
-    color: rgb(10, 0, 36) !important;
+    color: white !important;
     color: relinear-gradient(90deg, rgba(10, 0, 36, 1) 0%, rgba(121, 22, 9, 1) 100%, rgba(0, 212, 255, 1) 100%) !important;
-    background-color: white;
+    background-color: black;
     width: auto;
 }
 
@@ -193,8 +211,9 @@ p[autoTyping]::after {
 }
 
 .service {
+    background-color: whitesmoke;
     overflow: hidden;
-    margin-top: 5%;
+    // margin-top: 5%;
     width: 100%;
 
 }
@@ -264,7 +283,7 @@ p[autoTyping]::after {
 
         border: 1px solid black;
         border-radius: 10px;
-        background-color: whitesmoke;
+        background-color: rgb(254, 241, 95);
         // box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
 
         b {
@@ -272,7 +291,7 @@ p[autoTyping]::after {
         }
 
         p {
-            color: dimgray;
+            color: black;
         }
     }
 }
@@ -357,11 +376,11 @@ p[autoTyping]::after {
 
 // footer style css
 .footer-section {
-    margin-top: 100px;
+    // margin-top: 50px;
     width: 100%;
     height: 500px;
     padding: 100px 300px 100px 300px;
-    background-color: #F5F5F5;
+    background-color: rgb(254, 241, 0, 0.8); //rgb(254,241,95);
 
     .address-info {
         font-size: 17px;
@@ -407,7 +426,7 @@ p[autoTyping]::after {
         font-size: 14px;
 
         span {
-            color: rgba(255, 0, 0, 0.7);
+            color: black;
         }
     }
 }
@@ -433,15 +452,14 @@ p[autoTyping]::after {
 
     h1 {
         font-weight: 800;
-        color: rgba(255, 0, 0, 0.7);
+        color: black;
         font-size: 80px;
     }
 
     p {
         margin-top: 40px;
         font-size: 20px;
-        color: rgba(255, 0, 0, 0.7);
-        ;
+        color: black;
     }
 }
 
@@ -494,7 +512,7 @@ p[autoTyping]::after {
 
         h1:hover {
             letter-spacing: 5px;
-            color: rgba(255, 0, 0, 0.7);
+            color: rgb(254, 241, 95);
         }
     }
 
@@ -526,6 +544,7 @@ p[autoTyping]::after {
     z-index: 222;
     width: 100%;
     height: 100%;
+    background-color: rgb(254, 241, 95);
 
     mat-radio-button {
         color: black;
@@ -568,19 +587,19 @@ p[autoTyping]::after {
             border-radius: 50%;
             font-size: 25px;
             letter-spacing: 2px;
-            color: rgba(255, 0, 0, 0.7);
-            border-color: rgba(255, 0, 0, 0.7);
-            background-color: white;
+            color: rgb(254, 241, 95);
+            border-color: white;
+            background-color: black;
             transition: 0.3s;
         }
 
         .submit-btn:hover {
-            color: white;
+            color: rgb(254, 241, 95);
             width: 190px;
             height: 190px;
             border: none;
             letter-spacing: 5px;
-            background-color: rgba(255, 0, 0, 0.7);
+            background-color: black;
         }
     }
 
@@ -603,7 +622,7 @@ p[autoTyping]::after {
 
     li:hover {
         letter-spacing: 5px;
-        color: rgba(255, 0, 0, 0.7);
+        color: rgb(254, 241, 95);
     }
 }
 
