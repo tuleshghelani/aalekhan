@@ -74,6 +74,8 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterViewInit(){
+    var video:any = document.getElementById("bgVideo");
+      video.muted = true;
     this.ball = document.querySelector('.ball');
     console.log('check ball ->',this.ball)
     // this.animate();

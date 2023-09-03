@@ -34,10 +34,11 @@
 }
 
 .menu-icon>.line+.line {
-    // margin-top: 8px;
 }
+// margin-top: 8px;
 
 .landing-text {
+    position: relative;
     h1 {
         color: black;
         font-size: 40px;
@@ -169,17 +170,15 @@ $animationSpeed: 40s;
     width: 70px;
     height: 70px;
     transition: 0.5s;
+
     i {
         font-size: 27px;
     }
 }
 
 .contact-btn:hover {
-    color: black;
     width: 75px;
     height: 75px;
-    border: 2px solid black;
-    background-color: rgb(254, 241, 0, 0.8);
 }
 
 .navbar-area {
@@ -376,58 +375,53 @@ p[autoTyping]::after {
 
 // footer style css
 .footer-section {
-    // margin-top: 50px;
-    width: 100%;
-    height: 500px;
-    padding: 100px 300px 100px 300px;
-    background-color: rgb(254, 241, 0, 0.8); //rgb(254,241,95);
+    background-color: black;
+    align-items: center;
+    border-top: 2px solid yellow;
 
-    .address-info {
-        font-size: 17px;
-        margin-top: 20px;
-        transition: 0.5s;
-        cursor: pointer;
-        // font-weight: 500;
-
+    .content-section {
+        height: 480px;
     }
 
-    .address-info:hover {
-        color: rgba(255, 0, 0, 0.7);
-    }
-
-    h4 {
-        color: lightslategray;
-    }
-
-    .footer-list {
-        list-style-type: none;
-        font-size: 17px;
-
-        li {
-            margin-bottom: 16px;
-            cursor: pointer;
-            transition: 0.5s;
-        }
-
-        li:hover {
-            color: rgba(255, 0, 0, 0.7);
+    .left-text {
+        h1 {
+            color: whitesmoke;
+            font-weight: 800;
+            font-size: 140px;
+            margin: 100px 0px 120px 50px;
         }
     }
 
-    .brand-logo-footer {
-        margin-top: 40px;
-        width: 250px;
-        height: 200x;
+    .rights-text {
+        color: whitesmoke;
+        font-size: 16px;
+        margin: 70px 0px 0px 70px;
     }
 
-    .copyright-text {
-        margin: 60px;
-        color: lightslategray;
-        font-size: 14px;
+    .right-text {
+        h1 {
+            color: whitesmoke;
+            font-weight: 600;
+            font-size: 70px;
+            margin: 20px 50px 50px 0px;
+        }
+        margin-top: 150px;
+    }
 
+    .social-icons {
         span {
-            color: black;
+            color: whitesmoke;
+            font-size: 35px;
+            margin: 0px 50px 0px 40px;
         }
+        margin: 100px 70px 30px 0px;
+    }
+    .other-menus {
+        span {
+            color: whitesmoke;
+            margin: 5px 40px 20px 0px;
+        }
+        margin-right: 70px;
     }
 }
 
