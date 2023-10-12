@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
+import { HeadersComponent } from './headers/headers.component';
 // import { MatRadioGroupModule } from '@angular/material/radio';
 
 
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AboutUsComponent,
     ServiceComponent,
-    AutoTypeDirective
+    AutoTypeDirective,
+    HeadersComponent
   ],
   imports: [
     BrowserModule,
