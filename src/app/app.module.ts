@@ -19,6 +19,9 @@ import { FormsModule } from '@angular/forms';
 import { HeadersComponent } from './headers/headers.component';
 // import { MatRadioGroupModule } from '@angular/material/radio';
 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +44,11 @@ import { HeadersComponent } from './headers/headers.component';
     MatRadioModule,
     MatSelectModule,
     MatSliderModule,
-    FormsModule
+    FormsModule,
+    
+    MatFormFieldModule,
+    MatSliderModule,
+    MatCardModule
     // MatRadioGroupModule
   ],
   providers: [],

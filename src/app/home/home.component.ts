@@ -23,6 +23,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   ]
 })
 export class HomeComponent implements OnInit {
+  disabled = false;
+  max = 100;
+  min = 0;
+  showTicks = false;
+  thumbLabel = false;
+  value = 0;
 
   contactForm!: FormGroup
   carouselState = 'slideIn';
@@ -88,6 +94,14 @@ export class HomeComponent implements OnInit {
   onRangeValueChange(event: any) {
     this.budgetValue = event.value
     console.log('budget value =>>', event.value, this.budgetValue)
+  }
+  
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return `${value}`;
   }
 
   startCarousel() {
