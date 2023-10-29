@@ -70,15 +70,22 @@
     .contact-details {
         padding-left: 0px !important;
     }
+    .landing-text-second {
+        height: 95px;
+        h2 {
+            font-size: 25px !important;
+        }
+    }
+    .landing-page {
+        height: 750px !important;
+    }
 }
 
 .landing-page {
-    // rgb(254,241,95) primary color
-    // position: relative;
     height: 100%;
-    background-color: rgb(254, 241, 0, 0.8); //rgba(255, 0, 0, 0.7);
+    background-color: rgb(254, 241, 0, 0.8);
     overflow: hidden;
-    height: 750px;
+    height: 985px;
 }
 
 .bg-video {
@@ -96,9 +103,9 @@
     height: auto;
 }
 .footer-logo {
-    // position: absolute;
     width: 100%;
-    height: 200px;
+    height: auto;
+    margin-left: 50px;
     margin-top: 50px;
 }
 
@@ -201,7 +208,7 @@ $animationSpeed: 40s;
     width: 70px;
     height: 70px;
     transition: 0.5s;
-
+    z-index: 999;
     i {
         font-size: 27px;
     }
@@ -446,7 +453,7 @@ p[autoTyping]::after {
             margin: 0px 50px 0px 40px;
         }
 
-        margin: 100px 70px 30px 0px;
+        margin: 100px 70px 0px 0px !important;
     }
 
     .other-menus {
@@ -493,7 +500,8 @@ p[autoTyping]::after {
 
 .about-dialog {
     position: fixed;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x:hidden;
     z-index: 222;
     top: 0%;
     left: 0%;
@@ -503,9 +511,10 @@ p[autoTyping]::after {
 
     .about-brand-logo {
         position: absolute;
-        width: 185px;
+        width: 100px;
         height: auto;
-        top: -62px;
+        top: 20px;
+        left: 50px;
     }
 
     .Degree-brand-logo {
@@ -686,6 +695,19 @@ p[autoTyping]::after {
     color: #FBEB39;
 }
 
+.landing-text-second {
+    background-color: #123751;
+    height: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+        letter-spacing: 2px;
+        color: #FBEB39;
+        font-size: 40px;
+    }
+}
+
 ::ng-deep .mat-form-field {
     width: 100% !important;
 }
@@ -719,8 +741,10 @@ p[autoTyping]::after {
 @media (max-width: 575.98px) {
     .brand-logo {
         position: relative;
-        width: 100px;
+        width: 70px !important;
         height: auto;
+        top: 15px;
+        left: 15px;
     }
 
     .nav-link:hover {
@@ -840,7 +864,7 @@ p[autoTyping]::after {
 
             display: flex;
             justify-content: center;
-            margin: 65px 0px 30px 0px;
+            margin: 60px 0px 0px 150px !important;
         }
 
         .other-menus {
@@ -913,4 +937,13 @@ p[autoTyping]::after {
             font-size: 22px;
         }
     }
+    .social-icons {
+        position: relative !important;
+    }
+}
+
+.social-icons {
+    position: absolute;
+    bottom: 25px;
+    right: 85px;
 }
