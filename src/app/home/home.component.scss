@@ -77,7 +77,7 @@
         }
     }
     .landing-page {
-        height: 750px !important;
+        height: 600px !important;
     }
 }
 
@@ -134,7 +134,6 @@
         color: black;
         font-family: 'Georgia', serif;
         letter-spacing: 5.5px;
-        // font-style: italic;
         font-size: 80px;
         font-weight: 600;
     }
@@ -595,13 +594,11 @@ p[autoTyping]::after {
     z-index: 222;
     width: 100%;
     height: 100%;
-    // background-color: #125751;
 
     .contact-title {
 
         h1,
         p {
-            // color: #FBEB39;
             color: #123751;
         }
     }
@@ -705,6 +702,11 @@ p[autoTyping]::after {
         letter-spacing: 2px;
         color: #FBEB39;
         font-size: 40px;
+        font-family: 'Georgia', serif;
+    }
+     span{
+        color: #FBEB39;
+        font-size: 20px !important;
     }
 }
 

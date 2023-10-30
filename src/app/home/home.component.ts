@@ -138,8 +138,8 @@ export class HomeComponent implements OnInit {
     this.contactForm.reset()
   }
 
-  openAboutUs() {
-    this.isAboutDialogOpen = true;
+  actionEvent(event:any){
+    this.isAboutDialogOpen = event;
   }
 
   closeAboutDialog() {

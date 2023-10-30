@@ -1,1 +1,19 @@
-<p>headers works!</p>
+<nav class="navbar navbar-expand-lg navbar-area" [ngClass]="{'mt-4': screenWidth > 835}">
+    <img class="brand-logo" src="../assets/alekhan_icon.png" />
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav mx-auto">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/">Home</a>
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/service">Service</a>
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/about-us" style="cursor: pointer;">About Us</a>
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" style="cursor: pointer;"
+          (click)="contactDialog()">Contact Us</a>
+      </div>
+    </div>
+    <div *ngIf="activePage !== 'service'" class="about-popup float-right mr-4 mr-xxl-5 mr-xl-5 mr-lg-5 d-flex" (click)="openAboutUs()" style="cursor: pointer;color: black;">
+      <h1 style="font-weight: 500;" class="mr-2" >Menu</h1>
+      <i class="fa-solid fa-bars"></i></div>
+  </nav>
