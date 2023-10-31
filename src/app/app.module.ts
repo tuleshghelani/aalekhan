@@ -21,6 +21,7 @@ import { HeadersComponent } from './headers/headers.component';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
+import { TeamComponent } from './team/team.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {MatCardModule} from '@angular/material/card';
     AboutUsComponent,
     ServiceComponent,
     AutoTypeDirective,
-    HeadersComponent
+    HeadersComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
