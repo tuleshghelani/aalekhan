@@ -1,5 +1,5 @@
 
-@media (max-width: 365px) {
+@media (max-width: 465px) {
     .navbar {
         padding: 0px !important;
     }
@@ -77,15 +77,16 @@
         }
     }
     .landing-page {
-        height: 600px !important;
+        height: 800px !important;
     }
+
 }
 
 .landing-page {
     height: 100%;
     background-color: rgb(254, 241, 0, 0.8);
     overflow: hidden;
-    height: 985px;
+    height: 725px;
 }
 
 .bg-video {
@@ -102,6 +103,11 @@
     width: 80px;
     height: auto;
 }
+
+
+.brand-logo:hover {
+    cursor: pointer; /* Change the cursor to a pointer when hovering over the image */
+  }
 .footer-logo {
     width: 100%;
     height: auto;

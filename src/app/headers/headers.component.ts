@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-headers',
@@ -9,7 +10,7 @@ export class HeadersComponent implements OnInit {
 @Input() screenWidth:any;
 @Input() activePage!:string
 @Output() actionEvent = new EventEmitter<any>();
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -19,5 +20,8 @@ export class HeadersComponent implements OnInit {
   openAboutUs(){
     this.actionEvent.emit(true)
   }
-
+  navigateToHome() {
+    this.router.navigate(['/']); // Replace 'home' with your actual home route path
+  }
+  
 }
