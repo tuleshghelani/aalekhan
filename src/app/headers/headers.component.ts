@@ -7,21 +7,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./headers.component.scss']
 })
 export class HeadersComponent implements OnInit {
-@Input() screenWidth:any;
-@Input() activePage!:string
-@Output() actionEvent = new EventEmitter<any>();
-  constructor(private router:Router) { }
+  @Input() screenWidth: any;
+  @Input() activePage!: string
+  @Output() actionEvent = new EventEmitter<any>();
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  contactDialog(){}
+  contactDialog() { }
 
-  openAboutUs(){
-    this.actionEvent.emit(true)
+  openAboutUs() {
+    this.router.navigate(['/about-dialog'])
+    // this.actionEvent.emit(true)
+    // this.commonService.menuActionCall(true)
   }
+  
   navigateToHome() {
     this.router.navigate(['/']); // Replace 'home' with your actual home route path
   }
-  
+
 }

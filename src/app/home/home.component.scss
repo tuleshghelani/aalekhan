@@ -1,5 +1,5 @@
 
-@media (max-width: 465px) {
+@media (max-width: 375px) {
     .navbar {
         padding: 0px !important;
     }
@@ -66,9 +66,6 @@
             font-size: 60px !important;
             line-height: 60px !important;
         }
-    }
-    .contact-details {
-        padding-left: 0px !important;
     }
     .landing-text-second {
         height: 95px;
@@ -503,93 +500,6 @@ p[autoTyping]::after {
     }
 }
 
-.about-dialog {
-    position: fixed;
-    overflow-y: auto;
-    overflow-x:hidden;
-    z-index: 222;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-
-    .about-brand-logo {
-        position: absolute;
-        width: 100px;
-        height: auto;
-        top: 20px;
-        left: 50px;
-    }
-
-    .Degree-brand-logo {
-        position: absolute;
-        width: 85px;
-        height: auto;
-        top: -62px;
-    }
-
-    .about-close {
-        margin: 30px;
-        font-size: 44px;
-        color: white;
-    }
-
-    .about-header {
-        margin: 20px 20px 60px 20px;
-        height: 100px;
-    }
-
-    .team-image {
-        margin-top: 20px;
-        width: 520px;
-        height: 360px;
-        transition: filter 0.3s ease-in-out;
-    }
-
-    .team-image:hover {
-        filter: grayscale(100%);
-    }
-
-    .contact-text {
-        p {
-            color: whitesmoke;
-            font-size: 24px;
-            padding-bottom: 55px;
-        }
-
-        h1 {
-            font-size: 105px;
-            font-weight: 800;
-            color: whitesmoke;
-            cursor: pointer;
-            transition: 0.5s;
-        }
-
-        h1:hover {
-            letter-spacing: 5px;
-            color: #FBEB39;
-        }
-    }
-
-    .contact-details {
-        list-style-type: none;
-
-        li {
-            font-size: 24px;
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        .social-handle {
-            span {
-                font-size: 18px;
-                margin-right: 10px;
-            }
-        }
-    }
-}
-
 .contact-dialog {
     padding: 20px 30px 20px 30px;
     position: fixed;
@@ -668,24 +578,6 @@ p[autoTyping]::after {
 
     .modal-title {
         color: rgba(255, 0, 0, 0.7);
-    }
-}
-
-.about-list {
-    list-style-type: none;
-
-    li {
-        font-size: 95px;
-        font-weight: 800;
-        margin-bottom: 95px;
-        color: whitesmoke;
-        cursor: pointer;
-        transition: 0.5s;
-    }
-
-    li:hover {
-        letter-spacing: 5px;
-        color: #FBEB39;
     }
 }
 
@@ -879,40 +771,6 @@ p[autoTyping]::after {
             display: flex;
             margin-left: 25px;
             margin-right: 0px;
-        }
-    }
-
-    // about-us dialog
-    .about-dialog {
-        overflow-y: scroll;
-        height: 100%;
-
-        .about-close {
-            margin: 10px;
-        }
-
-        .about-header {
-            margin: 20px 20px 60px 20px;
-            height: 100px;
-        }
-
-        .contact-text {
-            p {
-                color: whitesmoke;
-                font-size: 24px;
-                padding-bottom: 55px;
-            }
-
-            h1 {
-                font-size: 75px;
-            }
-        }
-
-        .about-list {
-            li {
-                font-size: 65px;
-                margin-bottom: 65px;
-            }
         }
     }
 

@@ -1,4 +1,4 @@
-@import url(../home/home.component.scss);
+// @import url(../home/home.component.scss);
 
 .team-section {
     position: absolute;
@@ -88,13 +88,13 @@
     }
 }
 
-@media (max-width: 365px) {
+@media (max-width: 375px) {
     .heading-text {
         margin-top: 130px;
 
         h1 {
-            line-height: 50px;
-            font-size: 37px;
+            line-height: 65px;
+            font-size: 60px;
         }
     }
 
@@ -122,6 +122,48 @@
         width: 100%;
     }
 
+    .team-images {
+        .member-1 {
+            width: 95%;
+            margin-top: 0px;
+        }
+
+        .member-1:hover {
+            width: 100%;
+        }
+
+        .member-2 {
+            width: 95%;
+        }
+
+        .member-2:hover {
+            width: 100%;
+        }
+
+        .member-detail {
+            h1 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+        }
+    }
+}
+@media screen and (min-width: 376px) and (max-width: 500px) {
+    .team-section {
+        width: 100% !important;
+        overflow-x: hidden;
+    }
+    .heading-text {
+        margin-top: 130px;
+
+        h1 {
+            line-height: 65px;
+            font-size: 65px;
+        }
+    }
     .team-images {
         .member-1 {
             width: 95%;

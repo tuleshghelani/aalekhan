@@ -1,3 +1,7 @@
+@import url(../home/home.component.scss);
+.header-section {
+    background-color: #123751;
+}
 h1,
 h2,
 h3,
@@ -46,7 +50,7 @@ section {
 .sec-title{
 position:relative;
 z-index: 1;
-margin-bottom:60px;
+margin:60px 0px;
 }
 
 .sec-title .title{
@@ -218,7 +222,7 @@ bottom: 16px;
 z-index: 1;
 background: orange;
 padding: 10px 15px;
-left: 96px;
+left: 111px;
 width: calc(100% - 152px);
 border-radius: 50px;
 }
@@ -304,5 +308,8 @@ color: #ffffff
 @media (max-width: 575.98px) {
     .title-text {
         margin-top: 90px;
+    }
+    .about-section .image-column .inner-column .author-desc{
+        left: 113px;
     }
 }

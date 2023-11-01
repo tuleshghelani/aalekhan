@@ -87,7 +87,6 @@ export class HomeComponent implements OnInit {
     var video: any = document.getElementById("bgVideo");
     video.muted = true;
     this.ball = document.querySelector('.ball');
-    console.log('check ball ->', this.ball)
     // this.animate();
   }
 
@@ -95,7 +94,7 @@ export class HomeComponent implements OnInit {
     this.budgetValue = event.value
     console.log('budget value =>>', event.value, this.budgetValue)
   }
-  
+
   formatLabel(value: number): string {
     if (value >= 1000) {
       return Math.round(value / 1000) + 'k';
@@ -138,13 +137,13 @@ export class HomeComponent implements OnInit {
     this.contactForm.reset()
   }
 
-  actionEvent(event:any){
+  actionEvent(event: any) {
     this.isAboutDialogOpen = event;
   }
 
-  closeAboutDialog() {
-    this.isAboutDialogOpen = false;
-  }
+  // closeAboutDialog() {
+  //   this.isAboutDialogOpen = false;
+  // }
 
   contactDialog() {
     this.isContactDialogOpen = true;
@@ -190,10 +189,10 @@ export class HomeComponent implements OnInit {
       case 'instagram':
         window.open('https://www.instagram.com/aalekhan_branding', '_blank');
         break;
-        case 'pinterest':
+      case 'pinterest':
         window.open('https://in.pinterest.com/aalekhan_branding/', '_blank');
         break;
-        case 'behance':
+      case 'behance':
         window.open('https://www.behance.net/aalekhanbrandin', '_blank');
         break;
     }

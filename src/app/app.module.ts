@@ -22,6 +22,7 @@ import { HeadersComponent } from './headers/headers.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import { TeamComponent } from './team/team.component';
+import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TeamComponent } from './team/team.component';
     ServiceComponent,
     AutoTypeDirective,
     HeadersComponent,
-    TeamComponent
+    TeamComponent,
+    AboutDialogComponent
   ],
   imports: [
     BrowserModule,

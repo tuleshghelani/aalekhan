@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-area" [ngClass]="{'mt-4': screenWidth > 835}">
+<nav class="navbar navbar-expand-lg navbar-area mt-lg-4 mt-3">
     <img class="brand-logo" src="../assets/alekhan_icon.png"  (click)="navigateToHome()"/>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@
           (click)="contactDialog()">Contact Us</a>
       </div>
     </div>
-    <div *ngIf="activePage !== 'service'" class="about-popup float-right mr-4 mr-xxl-5 mr-xl-5 mr-lg-5 d-flex" (click)="openAboutUs()" style="cursor: pointer;color: black;">
+    <div class="about-popup float-right mr-4 mr-xxl-5 mr-xl-5 mr-lg-5 d-flex" [ngClass]="{'service-nav':activePage === 'service'}" (click)="openAboutUs()" style="cursor: pointer;color: black;">
       <h1 style="font-weight: 500;" class="mr-2" >Menu</h1>
       <i class="fa-solid fa-bars"></i></div>
   </nav>
