@@ -19,9 +19,11 @@ export class AutoTypeDirective implements AfterViewInit {
         index++;
         setTimeout(typeText, typingSpeed);
       } else {
-        index = 0;
-        this.el.nativeElement.innerHTML = '';
-        setTimeout(typeText, typingSpeed);
+        setTimeout(() => {
+          index = 0;
+          this.el.nativeElement.innerHTML = '';
+          typeText(); // Start typing again
+        }, 2000);
       }
     };
 
