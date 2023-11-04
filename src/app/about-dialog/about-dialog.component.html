@@ -1,20 +1,20 @@
 <div class="about-dialog">
     <div class="about-header">
-      <img class="about-brand-logo float-left" (click)="gotHomePage()" src="../assets/alekhan_icon.png" />
+      <img class="about-brand-logo float-left" (click)="gotHomePage()" src="../assets/alekhan_icon_white.png" />
       <div class="about-close float-right mr-lg-5" (click)="closeAboutDialog()" style="cursor: pointer;">&#10005;</div>
     </div>
     <div class="row">
       <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
         <ul class="about-list">
           <li routerLink="/about-us">About</li>
-          <li routerLink="/team">Team</li>
+          <li routerLink="/team">Team</li>          
+          <li>Clients</li>
         </ul>
       </div>
       <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
         <ul class="about-list">
           <li>Projects</li>
           <li>Experties</li>
-          <li>Clients</li>
         </ul>
       </div>
       <div class="col-md-4">

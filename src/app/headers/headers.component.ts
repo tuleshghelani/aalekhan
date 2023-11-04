@@ -10,12 +10,22 @@ export class HeadersComponent implements OnInit {
   @Input() screenWidth: any;
   @Input() activePage!: string
   @Output() actionEvent = new EventEmitter<any>();
+  
+  isHomePage: boolean = false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.checkIfHomePage();
   }
 
   contactDialog() { }
+  checkIfHomePage() {
+    // Get the current route
+    const currentRoute = this.router.url;
+
+    // Check if the current route is the root ("/") route
+    this.isHomePage = currentRoute === '/';
+  }
 
   openAboutUs() {
     this.router.navigate(['/about-dialog'])
