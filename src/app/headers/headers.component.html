@@ -13,7 +13,7 @@
         <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/about-us" style="cursor: pointer;">About Us</a>
         <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/team" style="cursor: pointer;">Team</a>
         <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" style="cursor: pointer;"
-          (click)="contactDialog()">Contact Us</a>
+        routerLink="/contact-us">Contact Us</a>
       </div>
     </div>
     <div class="about-popup float-right mr-4 mr-xxl-5 mr-xl-5 mr-lg-5 d-flex" [ngClass]="{'service-nav':activePage === 'service'}" (click)="openAboutUs()" style="cursor: pointer;color: black;">
