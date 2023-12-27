@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { NgModule, AfterViewInit, Component, OnInit } from '@angular/core';
+=======
+import { NgModule, AfterViewInit, Component, OnInit, HostListener } from '@angular/core';
+>>>>>>> 26afa6fb169aa15fd663099ffee109292940ca33
 // import * as fullpage from 'fullpage.js';
 declare const fullpage: any; // Provide type annotation for fullpage
 import * as AOS from "aos";
@@ -11,6 +15,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+<<<<<<< HEAD
   animations: [
     trigger('carouselAnimation', [
       transition(':increment', [
@@ -161,4 +166,9 @@ export class AppComponent implements OnInit {
       this.mouseY = event.pageY;
     // });
   }
+=======
+})
+export class AppComponent {
+constructor(){}
+>>>>>>> 26afa6fb169aa15fd663099ffee109292940ca33
 }

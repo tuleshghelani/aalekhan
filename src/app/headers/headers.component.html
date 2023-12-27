@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-area mt-lg-4 mt-3">
+    <!-- <img class="brand-logo" src="../assets/alekhan_icon_white.png"  (click)="navigateToHome()"/> -->
+    <img class="brand-logo" [src]="isHomePage ? '../assets/aalekhan logo icon black.png' : '../assets/aalekhan logo icon white.png'" (click)="navigateToHome()" />
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav mx-auto">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/">Home</a>
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/service">Service</a>
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/about-us" style="cursor: pointer;">About Us</a>
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" routerLink="/team" style="cursor: pointer;">Team</a>
+        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage === 'service'}" style="cursor: pointer;"
+        routerLink="/contact-us">Contact Us</a>
+      </div>
+    </div>
+    <div class="about-popup float-right mr-4 mr-xxl-5 mr-xl-5 mr-lg-5 d-flex" [ngClass]="{'service-nav':activePage === 'service'}" (click)="openAboutUs()" style="cursor: pointer;color: black;">
+      <h1 style="font-weight: 500;" class="mr-2" >Menu</h1>
+      <i class="fa-solid fa-bars"></i></div>
+  </nav>
