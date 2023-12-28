@@ -16,10 +16,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
-<<<<<<< HEAD
-// import { MatRadioGroupModule } from '@angular/material/radio';
-
-=======
 import { HeadersComponent } from './headers/headers.component';
 // import { MatRadioGroupModule } from '@angular/material/radio';
 
@@ -28,8 +24,6 @@ import {MatCardModule} from '@angular/material/card';
 import { TeamComponent } from './team/team.component';
 import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 import { ContactComponent } from './contact/contact.component';
-
->>>>>>> 26afa6fb169aa15fd663099ffee109292940ca33
 
 @NgModule({
   declarations: [
@@ -55,15 +49,11 @@ import { ContactComponent } from './contact/contact.component';
     MatRadioModule,
     MatSelectModule,
     MatSliderModule,
-<<<<<<< HEAD
-    FormsModule
-=======
     FormsModule,
     
     MatFormFieldModule,
     MatSliderModule,
     MatCardModule
->>>>>>> 26afa6fb169aa15fd663099ffee109292940ca33
     // MatRadioGroupModule
   ],
   providers: [],
