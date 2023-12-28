@@ -176,6 +176,14 @@
   background-color: var(--clr);
 }
 
+.cursor {
+  cursor: pointer;
+}
+::ng-deep .mat-dialog-container {
+  padding: 0px !important;
+  border-radius: none !important;
+}
+
 @media (max-width: 475px) {
     .service-section {
         overflow-x: hidden;
