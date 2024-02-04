@@ -25,6 +25,7 @@ import { TeamComponent } from './team/team.component';
 import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 import { ContactComponent } from './contact/contact.component';
 import { ServiceDialogComponent } from './service-dialog/service-dialog.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ServiceDialogComponent } from './service-dialog/service-dialog.componen
     TeamComponent,
     AboutDialogComponent,
     ContactComponent,
-    ServiceDialogComponent
+    ServiceDialogComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,

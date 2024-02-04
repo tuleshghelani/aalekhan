@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { TeamComponent } from './team/team.component';
 import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactComponent },
   { path: 'service', component: ServiceComponent },
   { path: 'team', component: TeamComponent },
-  { path: 'about-dialog', component: AboutDialogComponent }
+  { path: 'about-dialog', component: AboutDialogComponent },
+  { path: 'projects', component: ProjectComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

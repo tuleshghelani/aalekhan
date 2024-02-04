@@ -1,7 +1,4 @@
 @import url(../home/home.component.scss);
-.header-section {
-    background-color: #123751;
-}
 h1,
 h2,
 h3,
@@ -159,7 +156,9 @@ background-color: #FBEB00;
 .about-section{
 position: relative;
 background-color: #123751;
-padding: 120px 0 70px;
+.header-section {
+    padding :24px 0 170px;
+}
 }
 
 .about-section .sec-title{
