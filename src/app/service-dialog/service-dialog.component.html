@@ -9,9 +9,30 @@
         </div>
         <div class="service-description">
             <h2>{{data.service}} Description</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt temporibus earum officiis! Aspernatur
-                aliquam quod est minima ipsum sed maiores consequatur minus doloremque deleniti. Vero neque quas quos
-                ratione ipsa?</p>
+            <p *ngIf="data.service == 'Print Media'">
+                The project entails the creation of a tri-fold brochure aimed at promoting our new product line of eco-friendly household items. The brochure will serve as a promotional tool distributed during trade shows and events.
+            </p>
+            <p *ngIf="data.service == 'Theme Creation'">
+                The project entails the creation of a tri-fold brochure aimed at promoting our new product line of eco-friendly household items. The brochure will serve as a promotional tool distributed during trade shows and events.
+            </p>
+            <div *ngIf="data.service == 'Corporate Video'">
+                <p>
+                    Welcome to a world where imagination meets innovation! Our corporate video showcases the mastery of graphic design, highlighting our commitment to visual excellence and creativity.
+                </p>
+                <p>
+                    Step into a realm where pixels and creativity collide. Our team of graphic designers meticulously crafts visuals that transcend boundaries, captivating audiences worldwide.
+                </p>
+            </div>
+            <div *ngIf="data.service == 'Branding'">
+                <p>
+                    At the heart of our brand lies a commitment to innovation, excellence, and customer satisfaction. We strive to create experiences that resonate with our audience, leaving a lasting impression that reflects our core values and vision.
+                </p>
+            </div>
+            <div *ngIf="data.service == 'Web Development'">
+                <p>
+                    Web development is the practice of creating and maintaining websites and web applications that are accessible via the internet. It encompasses a range of tasks, including web design, front-end development, back-end development, and web server configuration
+                </p>
+            </div>
         </div>
     </div>
 </div>
