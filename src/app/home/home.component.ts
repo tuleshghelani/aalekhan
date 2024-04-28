@@ -43,10 +43,10 @@ export class HomeComponent implements OnInit {
   ballY = 0;
   speed = 0.1;
 
-  budgetValue: any = 0;
-  minBudget: number = 5000;
-  maxBudget: number = 100000;
-  step: number = 1000;
+  budgetValue: any = 50000;
+  minBudget: number = 50000;
+  maxBudget: number = 500000;
+  step: number = 10000;
   screenWidth: any
 
   serviceOption: string[] = ['RESEARCH', 'STRATEGY', 'IDENTITY', 'DIGITAL', 'ADVERTISING'];
@@ -89,10 +89,9 @@ export class HomeComponent implements OnInit {
     this.ball = document.querySelector('.ball');
     // this.animate();
   }
-
+  
   onRangeValueChange(event: any) {
     this.budgetValue = event.value
-    console.log('budget value =>>', event.value, this.budgetValue)
   }
 
   formatLabel(value: number): string {
