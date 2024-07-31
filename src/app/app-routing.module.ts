@@ -8,6 +8,7 @@ import { TeamComponent } from './team/team.component';
 import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProjectComponent } from './project/project.component';
+import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'about-dialog', component: AboutDialogComponent },
   { path: 'projects', component: ProjectComponent },
+  { path: 'projects/details', component: ProjectDetailsComponent },
   { path: '**', component: HomeComponent },
 ];
 

@@ -26,6 +26,7 @@ import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 import { ContactComponent } from './contact/contact.component';
 import { ServiceDialogComponent } from './service-dialog/service-dialog.component';
 import { ProjectComponent } from './project/project.component';
+import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ProjectComponent } from './project/project.component';
     AboutDialogComponent,
     ContactComponent,
     ServiceDialogComponent,
-    ProjectComponent
+    ProjectComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     BrowserModule,

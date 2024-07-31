@@ -1,0 +1,58 @@
+@import url(../../home/home.component.scss);
+
+.header {
+    background-color: #123751;
+}
+
+.project-details-section {
+    background-color: #123751;
+
+    .front-label {
+        padding: 30px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .product-details {
+        h3 {
+            font-size: 25px;
+            color: #cfcc23;
+        }
+
+        strong {
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: #cfcc23;
+        }
+
+        p {
+            color: white;
+            font-size: 16px;
+        }
+    }
+
+    .product-showcase {
+        img {
+            width: 336px;
+            height: auto;
+            margin: 20px;
+            transition: all 0.2s ease-in-out;
+        }
+        img:hover {
+            filter: brightness(50%);    
+        }
+
+        .brand-label-text {
+            h1 {
+                color: white;
+            }
+            .horizontal-line {
+                width: 100%;
+                border: 1px solid black;
+            }
+        }
+    }
+}
