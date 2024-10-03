@@ -9,6 +9,7 @@ import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
+import { AllProjectsComponent } from './all-projects/all-projects.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'service', component: ServiceComponent },
   { path: 'team', component: TeamComponent },
   { path: 'about-dialog', component: AboutDialogComponent },
-  { path: 'projects', component: ProjectComponent },
+  // { path: 'projects', component: ProjectComponent },
+  { path: 'projects', component: AllProjectsComponent },
   { path: 'projects/details', component: ProjectDetailsComponent },
   { path: '**', component: HomeComponent },
 ];

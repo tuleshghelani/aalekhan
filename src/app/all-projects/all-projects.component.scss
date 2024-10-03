@@ -1,0 +1,191 @@
+@import url(../home/home.component.scss);
+
+.header {
+    background-color: #123751;
+}
+
+.projects-container {
+    background-color: #123751;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.wave {
+    position: absolute;
+    opacity: 0.8;
+    background: #FBEB39;
+    border-radius: 50%;
+
+    &:nth-child(1) {
+        width: 1500px;
+        height: 1500px;
+        left: -750px;
+        bottom: -750px;
+        animation: wave 9s infinite linear;
+    }
+
+    &:nth-child(2) {
+        width: 1300px;
+        height: 1300px;
+        right: -650px;
+        top: -650px;
+        animation: wave 12s infinite linear;
+    }
+
+    &:nth-child(3) {
+        width: 800px;
+        height: 800px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse 6s infinite ease-in-out;
+    }
+}
+
+@keyframes wave {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.header {
+    position: relative;
+    z-index: 2;
+    color: #FBEB39;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.projects-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 3rem;
+}
+
+.project-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    cursor: pointer;
+    border: 2px solid #FBEB39;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(251, 235, 57, 0.8) 0%, rgba(251, 235, 57, 0) 70%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+    }
+
+    &:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+        &::before {
+            opacity: 1;
+        }
+
+        .project-image {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .project-info {
+            transform: translateY(-10px);
+        }
+
+        .view-more {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    background-color: #123751;
+}
+
+.project-info {
+    padding: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-title {
+    color: #123751;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.project-category {
+    color: #FBEB39;
+    background-color: #123751;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.project-description {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: opacity 0.3s ease;
+}
+
+.view-more {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #123751;
+    color: #FBEB39;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card:hover .project-category {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.project-card:hover .project-description {
+    opacity: 0.7;
+}

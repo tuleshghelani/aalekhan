@@ -27,6 +27,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ServiceDialogComponent } from './service-dialog/service-dialog.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
+import { AllProjectsComponent } from './all-projects/all-projects.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProjectDetailsComponent } from './project/project-details/project-detai
     ContactComponent,
     ServiceDialogComponent,
     ProjectComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    AllProjectsComponent
   ],
   imports: [
     BrowserModule,

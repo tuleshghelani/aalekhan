@@ -1,0 +1,27 @@
+<div class="header pt-4">
+    <app-headers [activePage]="'projects'"></app-headers>
+</div>
+<div class="header">
+  <h1 style="color: #FBEB39;">Our Projects</h1>
+</div>
+<div class="projects-container">
+    <div class="animated-background">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects" 
+           (mousemove)="onMouseMove($event)" 
+           (mouseleave)="onMouseLeave($event)"
+           [attr.data-tilt]="true">
+        <img [src]="project.image" [alt]="project.title" class="project-image">
+        <div class="project-info">
+          <h2 class="project-title">{{ project.title }}</h2>
+          <span class="project-category">{{ project.category }}</span>
+          <p class="project-description">{{ project.description }}</p>
+          <a href="#" class="view-more">View Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
