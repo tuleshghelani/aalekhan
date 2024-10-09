@@ -3,19 +3,23 @@
     <div class="main-image">
       <img [src]="project.allImages[selectedImageIndex]" [alt]="project.title">
     </div>
-    <div class="thumbnail-list">
-      <img *ngFor="let image of project.allImages; let i = index"
-           [src]="image"
-           [alt]="project.title + ' thumbnail'"
-           (click)="selectImage(i)"
-           loading="lazy"
-           [class.active]="i === selectedImageIndex">
+    <div class="thumbnail-container">
+      <div class="thumbnail-list">
+        <img *ngFor="let image of project.allImages; let i = index"
+             [src]="image"
+             [alt]="project.title + ' thumbnail'"
+             (click)="selectImage(i)"
+             loading="lazy"
+             [class.active]="i === selectedImageIndex">
+      </div>
     </div>
   </div>
   <div class="project-details">
     <h2>{{project.title}}</h2>
     <span class="category">{{project.category}}</span>
-    <p class="description">{{project.description}}</p>
-    <p class="main-description" *ngIf="project.mainDescription">{{project.mainDescription}}</p>
+    <div class="scrollable-content">
+      <p class="description">{{project.description}}</p>
+      <p class="main-description" *ngIf="project.mainDescription">{{project.mainDescription}}</p>
+    </div>
   </div>
 </div>
