@@ -28,6 +28,7 @@ import { ServiceDialogComponent } from './service-dialog/service-dialog.componen
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 import { AllProjectsComponent } from './all-projects/all-projects.component';
+import { ProjectDetailsPopupComponent } from './project-details-popup/project-details-popup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AllProjectsComponent } from './all-projects/all-projects.component';
     ServiceDialogComponent,
     ProjectComponent,
     ProjectDetailsComponent,
-    AllProjectsComponent
+    AllProjectsComponent,
+    ProjectDetailsPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { AllProjectsComponent } from './all-projects/all-projects.component';
     
     MatFormFieldModule,
     MatSliderModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
     // MatRadioGroupModule
   ],
   providers: [],

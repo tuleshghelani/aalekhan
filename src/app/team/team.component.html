@@ -1,88 +1,47 @@
 <div class="team-section">
-    <div class="mt-4">
-        <app-headers [activePage]="'service'"></app-headers>
+    <div class="background-animation">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+            <!-- <defs>
+                <pattern id="pattern1" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="rotate(45)">
+                    <rect width="100%" height="100%" fill="#123751" opacity="0.1"/>
+                    <circle cx="20" cy="20" r="5" fill="#FBEB39" opacity="0.2"/>
+                </pattern>
+            </defs> -->
+            <rect width="100%" height="100%" fill="url(#pattern1)" />
+            <circle cx="100" cy="100" r="50" fill="#FBEB39" opacity="0.1">
+                <animate attributeName="cy" from="50" to="1050" dur="15s" repeatCount="indefinite"/>
+                <animate attributeName="r" from="30" to="60" dur="5s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="800" cy="300" r="40" fill="#FBEB39" opacity="0.1">
+                <animate attributeName="cy" from="1050" to="-50" dur="18s" repeatCount="indefinite"/>
+                <animate attributeName="r" from="20" to="50" dur="6s" repeatCount="indefinite" />
+            </circle>
+            <path d="M0,0 L50,50 L100,0 Z" fill="#FBEB39" opacity="0.1">
+                <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite"/>
+                <animate attributeName="y" from="-100" to="1100" dur="20s" repeatCount="indefinite"/>
+            </path>
+        </svg>
     </div>
-    <div class="row m-0 w-100">
-        <div class="mx-auto team-content">
-            <div class="heading-text col-sm-12 col-lg-5">
-                <h1>We Chase  <br>Extraordinary.</h1>
-            </div>
-            <hr class="hr-line">
-            <div class="right-content col-sm-12 col-lg-5 ml-auto">
-                <p>Is it really possible to seek everything?</p>
-                <p class="desc-text">Alone, it seems impossible but together it doesn't. We all understand the level of
-                    expertise we have
-                    in our respective fields and we keep increasing it. Whatever we learn individually, we share with
-                    each other. And that's what makes 'Team aalekhan' more powerful.
-                </p>
-            </div>
-            <div class="heading-text col-sm-12 col-lg-7">
-                <h1>We are Seekers.<br>We are Alekhans.</h1>
-            </div>
-            <div class="team-images row mt-5">
-                <div class="col-sm-12 col-lg-6 text-center">
-                    <img class="member-1" style="max-width: 500px;"
-                        src="../../assets/team/nikul.jpg">
-                    <div class="member-detail text-center pt-3">
-                        <h1 class="mb-1 pb-1">Nikul Patel</h1>
-                        <p>Co-Founder</p>
+    <app-headers [activePage]="'service'"></app-headers>
+    <div class="team-content">
+        <div class="team-intro">
+            <h1 class="main-title">We Chase <span class="highlight">Extraordinary</span>.</h1>
+            <p class="intro-text">Is it really possible to seek everything?</p>
+            <p class="desc-text">Alone, it seems impossible but together it doesn't. We all understand the level of expertise we have in our respective fields and we keep increasing it. Whatever we learn individually, we share with each other. And that's what makes 'Team aalekhan' more powerful.</p>
+        </div>
+        <h2 class="sub-title">We are Seekers. We are Alekhans.</h2>
+        <div class="team-grid">
+            <ng-container *ngFor="let member of teamMembers; let i = index">
+                <div class="team-member" [class.left]="i % 2 === 0" [class.right]="i % 2 !== 0">
+                    <div class="member-image">
+                        <img [src]="member.image" [alt]="member.name">
+                    </div>
+                    <div class="member-info">
+                        <h3>{{member.name}}</h3>
+                        <p>{{member.position}}</p>
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-6 text-center">
-                    <img class="member-2"
-                        src="../../assets/team/pujan.jpg">
-                    <div class="member-detail text-center pt-3">                        
-                        <h1 class="mb-1 pb-1">Pujan Patel</h1>
-                        <p>Founder and CEO</p>
-                    </div>
-                </div>
-                <div class="mt-5 col-sm-12 col-lg-6 text-center">
-                    <img class="member-1"
-                        src="../../assets/team/rahika.jpg">
-                    <div class="member-detail text-center pt-3">
-                        <h1 class="mb-1 pb-1">Radhika Varsani</h1>
-                        <p>Digital marketing head</p>
-                    </div>
-                </div>
-                <div class="mt-5 col-sm-12 col-lg-6 text-center">
-                    <img class="member-2"
-                        src="../../assets/team/darshit.jpg">
-                    <div class="member-detail text-center pt-3">
-                        <h1 class="mb-1 pb-1">Darshit sanghani</h1>
-                        <p>Graphics designer</p>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-6 text-center">
-                    <img class="member-1"
-                        src="../../assets/team/puja-anadkat.jpg">
-                    <div class="member-detail text-center pt-3">
-                        <h1 class="mb-1 pb-1">Pooja anadkat</h1>
-                        <p>Graphics design</p>
-                    </div>
-                </div>
-                <div class="mt-4 col-sm-12 col-lg-6 text-center">
-                    <div>
-                        <img class="member-2" src="../../assets/team/rutvik-bhatt.jpg">
-                        <div class="member-detail text-center pt-3">
-                            <h1 class="mb-1 pb-1">Rutvik Bhatt</h1>
-                            <p>Web Developer</p>
-                        </div>
-                        <img class="tulesh-image member-2" src="../../assets/team/tulesh-ghelani.jpg">
-                        <div class="member-detail text-center pt-3 mb-5">
-                            <h1 class="mb-1 pb-1">Tulesh Ghelani</h1>
-                            <p>Web Developer</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="mt-4 col-sm-12 col-lg-6 text-center">
-                    <img class="member-1"
-                        src="../../assets/team/tulesh-ghelani.jpg">
-                    <div class="member-detail text-center pt-3">
-                        <h1 class="mb-1 pb-1">Tulesh Ghelani</h1>
-                        <p>Web Developer</p>
-                    </div>
-                </div> -->
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>

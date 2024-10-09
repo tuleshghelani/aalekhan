@@ -1,81 +1,24 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import VanillaTilt from 'vanilla-tilt';
+import { ProjectService, Project } from '../services/project.service';
+import { ProjectDetailsPopupComponent } from '../project-details-popup/project-details-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-all-projects',
   templateUrl: './all-projects.component.html',
   styleUrls: ['./all-projects.component.scss']
 })
-export class AllProjectsComponent implements OnInit {
-  projects = [
-    {
-      title: 'Project title',
-      category: 'Packaging Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Corporate Identity',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Web Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Print Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Packaging Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Packaging Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Packaging Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Packaging Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Packaging Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-    {
-      title: 'Project title',
-      category: 'Packaging Design',
-      description: 'Project descrption',
-      image: 'assets/all-projects/aalekhan.jpeg'
-    },
-  ];
+export class AllProjectsComponent implements OnInit, AfterViewInit {
+  projects: Project[] = [];
 
-  constructor() { }
+  constructor(private projectService: ProjectService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.projects = this.projectService.getProjects();
   }
 
-  
   ngAfterViewInit(): void {
     this.initTilt();
   }
@@ -89,7 +32,6 @@ export class AllProjectsComponent implements OnInit {
     });
   }
 
-  
   onMouseMove(event: MouseEvent): void {
     const card = event.currentTarget as HTMLElement;
     const rect = card.getBoundingClientRect();
@@ -104,5 +46,13 @@ export class AllProjectsComponent implements OnInit {
     const card = event.currentTarget as HTMLElement;
     card.style.removeProperty('--mouse-x');
     card.style.removeProperty('--mouse-y');
+  }
+
+  openProjectDetails(project: Project): void {
+    this.dialog.open(ProjectDetailsPopupComponent, {
+      data: project,
+      maxWidth: '90vw',
+      maxHeight: '90vh'
+    });
   }
 }

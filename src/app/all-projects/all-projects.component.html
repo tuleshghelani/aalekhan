@@ -20,7 +20,8 @@
           <h2 class="project-title">{{ project.title }}</h2>
           <span class="project-category">{{ project.category }}</span>
           <p class="project-description">{{ project.description }}</p>
-          <a href="#" class="view-more">View Project</a>
+          <!-- <a href="#" class="view-more" (click)="openProjectDetails(project)">View Project</a> -->
+          <button class="view-more" (click)="openProjectDetails(project)">View Project</button>
         </div>
       </div>
     </div>
