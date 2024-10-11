@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MnFullpageModule } from 'ngx-fullpage';
+// import { MnFullpageModule } from 'ngx-fullpage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -50,7 +50,7 @@ import { ProjectDetailsPopupComponent } from './project-details-popup/project-de
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MnFullpageModule,
+    // MnFullpageModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
