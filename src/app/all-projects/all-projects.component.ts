@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import VanillaTilt from 'vanilla-tilt';
 import { ProjectService, Project } from '../services/project.service';
 import { ProjectDetailsPopupComponent } from '../project-details-popup/project-details-popup.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'app-all-projects',
