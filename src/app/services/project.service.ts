@@ -26,11 +26,13 @@ export class ProjectService {
       ]
     },
     {
-      title: 'Project title',
-      category: 'Corporate Identity',
-      description: 'Project description',
-      image: 'assets/all-projects/aalekhan.jpeg',
-      allImages: ['assets/all-projects/aalekhan.jpeg', 'assets/all-projects/aalekhan2.jpeg']
+      title: 'Florena',
+      category: 'Label and sticker',
+      description: 'Let us help you create a cohesive brand identity that speaks to your target market and drives your business forward.',
+      mainDescription: 'At aalekhan branding, we believe that powerful design is the heart of great branding. Our custom packaging and logo designs are crafted to tell your brand’s unique story, captivate your audience, and elevate your product',
+      image: 'assets/all-projects/florena_post_1.jpg',
+      allImages: ['assets/all-projects/florena_post_1.jpg', 'assets/all-projects/florena_post_2.jpg', 'assets/all-projects/florena_post_3.jpg'
+      ]
     },
     {
       title: 'Project title',
