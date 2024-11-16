@@ -35,11 +35,14 @@ export class ProjectService {
       ]
     },
     {
-      title: 'Project title',
-      category: 'Corporate Identity',
-      description: 'Project description',
-      image: 'assets/all-projects/aalekhan.jpeg',
-      allImages: ['assets/all-projects/aalekhan.jpeg', 'assets/all-projects/aalekhan2.jpeg']
+      title: 'NKC bearings LLP',
+      category: 'Box, Advertising, Packaging, Branding',
+      description: 'The right presentation doesn`t just present your product; it positions as the solution. At Aalekhan we specialize in brand creation that goes beyond logos, brochures and packaging. We make your business unique. That speaks to the people who matter most to your audience.',
+      image: 'assets/all-projects/box.jpg',
+      allImages: ['assets/all-projects/box.jpg', 'assets/all-projects/brochure_front.jpg'
+        ,'assets/all-projects/brochure_inner_pages.jpg','assets/all-projects/letterhead_business_card.jpg',
+        'assets/all-projects/roughpad.jpg','assets/all-projects/social_media.jpg'
+      ]
     },
     {
       title: 'Project title',
