@@ -45,11 +45,14 @@ export class ProjectService {
       ]
     },
     {
-      title: 'Project title',
-      category: 'Corporate Identity',
-      description: 'Project description',
-      image: 'assets/all-projects/aalekhan.jpeg',
-      allImages: ['assets/all-projects/aalekhan.jpeg', 'assets/all-projects/aalekhan2.jpeg']
+      title: 'Pusti art',
+      category: 'Logo',
+      description: 'Showcases a new visual identity for Pushti art. We made this logo with the goal of designing a distinct, playful It’s the perfect tool to showcase creativity and professionalism.',
+      image: 'assets/all-projects/pusti_art_01.jpg',
+      allImages: ['assets/all-projects/pusti_art_01.jpg', 'assets/all-projects/pusti_art_02.jpg',
+        'assets/all-projects/pusti_art_03.jpg', 'assets/all-projects/pusti_art_04.jpg',
+        'assets/all-projects/pusti_art_05.jpg', 'assets/all-projects/pusti_art_06.jpg'
+      ]
     },
     // ... Add the rest of your projects here with the allImages field
   ];
