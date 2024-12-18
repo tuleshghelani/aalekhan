@@ -54,6 +54,15 @@ export class ProjectService {
         'assets/all-projects/pusti_art_05.jpg', 'assets/all-projects/pusti_art_06.jpg'
       ]
     },
+    {
+      title: 'Oracle',
+      category: 'Logo',
+      description: 'Demonstrated creativity, versatility and ability to create unique, user-centered designs.',
+      image: 'assets/all-projects/oracle/ORACLE_SEEDS_POST_4.jpg',
+      allImages: ['assets/all-projects/oracle/ORACLE_SEEDS_POST_4.jpg', 'assets/all-projects/oracle/ORACLE_POST_3.jpg','assets/all-projects/oracle/ORACLE_POST_1.jpg',
+        'assets/all-projects/oracle/ORACLE_POST_2_SWIPE.jpg', 'assets/all-projects/oracle/ORACLE_POST_2.jpg', 'assets/all-projects/oracle/ORACLE_POST_6.jpg'
+      ]
+    },
     // ... Add the rest of your projects here with the allImages field
   ];
 
