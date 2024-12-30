@@ -56,8 +56,8 @@ export class ProjectService {
     },
     {
       title: 'Oracle',
-      category: 'Logo',
-      description: 'Demonstrated creativity, versatility and ability to create unique, user-centered designs.',
+      category: 'Packaging Design',
+      description: 'Our packaging design elevates your brand by combining creativity with functionality. We craft unique, eye-catching solutions that capture attention and communicate your brand’s essence. Demonstrated creativity, versatility and ability to create unique, user-centered designs.',
       image: 'assets/all-projects/oracle/ORACLE_SEEDS_POST_4.jpg',
       allImages: ['assets/all-projects/oracle/ORACLE_SEEDS_POST_4.jpg', 'assets/all-projects/oracle/ORACLE_POST_3.jpg','assets/all-projects/oracle/ORACLE_POST_1.jpg',
         'assets/all-projects/oracle/ORACLE_POST_2_SWIPE.jpg', 'assets/all-projects/oracle/ORACLE_POST_2.jpg', 'assets/all-projects/oracle/ORACLE_POST_6.jpg'
