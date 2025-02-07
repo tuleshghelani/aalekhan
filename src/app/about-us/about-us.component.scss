@@ -53,21 +53,32 @@ margin:60px 0px;
 .sec-title .title{
 position: relative;
 display: block;
-font-size: 18px;
+font-size: 24px;
 line-height: 24px;
-color: #00aeef;
+color: #FBEB39;
 font-weight: 500;
 margin-bottom: 15px;
+text-transform: uppercase;
+letter-spacing: 1px;
 }
 
 .sec-title h2{
 position: relative;
 display: block;
-font-size:40px;
-line-height: 1.28em;
+font-size:48px;
+line-height: 1.2;
 color: whitesmoke;
-font-weight: 600;
-padding-bottom:18px;
+font-weight: 700;
+padding-bottom:30px;
+margin-bottom: 30px;
+
+@media (max-width: 768px) {
+    font-size: 36px;
+}
+
+@media (max-width: 480px) {
+    font-size: 28px;
+}
 }
 
 .sec-title h2:before{
@@ -82,11 +93,17 @@ background-color:#d1d2d6;
 
 .sec-title .text{
 position: relative;
-font-size: 16px;
-line-height: 26px;
-color: #848484;
+font-size: 18px;
+line-height: 1.8;
+color: #d1d2d6;
 font-weight: 400;
-margin-top: 35px;
+margin-top: 30px;
+margin-bottom: 30px;
+
+@media (max-width: 768px) {
+    font-size: 16px;
+    line-height: 1.6;
+}
 }
 
 .sec-title.light h2{
