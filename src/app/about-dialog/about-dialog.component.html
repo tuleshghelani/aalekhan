@@ -7,14 +7,14 @@
       <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
         <ul class="about-list">
           <li routerLink="/about-us">About</li>
-          <li routerLink="/team">Team</li>     
+          <!-- <li routerLink="/team">Team</li>      -->
           <li routerLink="/service">Service</li>
         </ul>
       </div>
       <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
         <ul class="about-list">
           <li routerLink="/projects">Projects</li>
-          <li>Clients</li>
+          <!-- <li>Clients</li> -->
         </ul>
       </div>
       <div class="col-md-4">
@@ -24,7 +24,7 @@
     <div class="row ml-4 mt-5">
       <div class="col-md-6 mt-5 contact-text pl-0" [ngClass]="screenWidth < 835 ? 'text-left' : 'text-center'">
         <p>Are you ready for grow your business</p>
-        <h1>Contact</h1>
+        <h1 routerLink="/contact-us">Contact</h1>
       </div>
       <div class="col-md-6 mt-5">
         <ul class="contact-details">
