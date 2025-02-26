@@ -92,11 +92,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.screenWidth = window.innerWidth;
   }
 
-  carouselItems: any[] = [
-    { image: "../assets/Elon_Musk.webp", name: "Elon Musk", details: "We Understand your brand's purpose, vision , value , audience competition, persona etc. through in-depth discovery session to establish an apt positioning strategy" },
-    { image: "../assets/jeff_bezos.webp", name: "Jeff Bezos", details: "We Understand your brand's purpose, vision , value , audience competition, persona etc. through in-depth discovery session to establish an apt positioning strategy" },
-    { image: "../assets/sundar_pichai.jpeg", name: "Sundar Pichai", details: "We Understand your brand's purpose, vision , value , audience competition, persona etc. through in-depth discovery session to establish an apt positioning strategy" }
-  ];
 
   ngOnInit() {
     this.setMetaData();
@@ -124,31 +119,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     return `${value}`;
   }
 
-  startCarousel() {
-    setInterval(() => {
-      this.carouselState = 'slideIn';
-      setTimeout(() => {
-        this.carouselItems.push(this.carouselItems.shift());
-        this.carouselState = '';
-      }, 400);
-    }, 3000);
-  }
-
-  previousSlide() {
-    this.carouselState = 'slideIn';
-    setTimeout(() => {
-      this.carouselItems.unshift(this.carouselItems.pop());
-      this.carouselState = '';
-    }, 400);
-  }
-
-  nextSlide() {
-    this.carouselState = 'slideIn';
-    setTimeout(() => {
-      this.carouselItems.push(this.carouselItems.shift());
-      this.carouselState = '';
-    }, 400);
-  }
 
   submitForm() {
     console.log('submit data =>', this.contactForm.value)
