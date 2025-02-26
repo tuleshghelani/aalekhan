@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Meta, Title } from '@angular/platform-browser';
+import { NeonCursorComponent } from './components/neon-cursor.component';
 
 // import { Swiper } from "swiper";
 
@@ -19,7 +20,8 @@ import { Meta, Title } from '@angular/platform-browser';
     RouterOutlet,
     RouterModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    NeonCursorComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
