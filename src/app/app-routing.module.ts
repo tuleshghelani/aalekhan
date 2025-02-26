@@ -12,22 +12,11 @@ import { ProjectDetailsComponent } from './project/project-details/project-detai
 import { AllProjectsComponent } from './all-projects/all-projects.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
-  },
-  {
-    path: 'about-us',
-    loadComponent: () => import('./about-us/about-us.component').then(m => m.AboutUsComponent)
-  },
-  {
-    path: 'service',
-    loadComponent: () => import('./service/service.component').then(m => m.ServiceComponent)
-  },
-  {
-    path: 'team',
-    loadComponent: () => import('./team/team.component').then(m => m.TeamComponent)
-  },
+  { path: '', component: HomeComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactComponent },
+  { path: 'service', component: ServiceComponent },
+  // { path: 'team', component: TeamComponent },
   { path: 'about-dialog', component: AboutDialogComponent },
   { path: 'projects', component: AllProjectsComponent },
   { path: 'projects/details', component: ProjectDetailsComponent },

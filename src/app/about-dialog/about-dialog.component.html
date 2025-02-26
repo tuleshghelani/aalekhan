@@ -6,14 +6,14 @@
     <div class="row">
       <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
         <ul class="about-list">
-          <li routerLink="/about-us">About</li>
+          <li (click)="openAllProjects('/about-us')">About</li>
           <!-- <li routerLink="/team">Team</li>      -->
-          <li routerLink="/service">Service</li>
+          <li (click)="openAllProjects('/service')">Service</li>
         </ul>
       </div>
       <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
         <ul class="about-list">
-          <li routerLink="/projects">Projects</li>
+          <li (click)="openAllProjects('/projects')">Projects</li>
           <!-- <li>Clients</li> -->
         </ul>
       </div>

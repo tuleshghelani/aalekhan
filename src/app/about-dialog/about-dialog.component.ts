@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-about-dialog',
@@ -13,7 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 })
 export class AboutDialogComponent implements OnInit {
 
-  constructor(private router:Router, private routeLocation:Location) { }
+  constructor(private router:Router, private routeLocation:Location, private dialog: MatDialog) { }
   screenWidth: any
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -48,6 +48,10 @@ export class AboutDialogComponent implements OnInit {
         window.open('https://www.behance.net/aalekhanbrandin', '_blank');
         break;
     }
+  }
+
+  openAllProjects(url: string) {
+    this.router.navigate([url]);
   }
 
 

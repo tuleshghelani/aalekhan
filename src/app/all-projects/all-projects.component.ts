@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import VanillaTilt from 'vanilla-tilt';
 import { ProjectService, Project } from '../services/project.service';
 import { ProjectDetailsPopupComponent } from '../project-details-popup/project-details-popup.component';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-all-projects',
@@ -17,8 +18,11 @@ import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 export class AllProjectsComponent implements OnInit, AfterViewInit {
   projects: Project[] = [];
 
-  constructor(private projectService: ProjectService,
-    private dialog: MatDialog) { }
+  constructor(
+    private projectService: ProjectService, 
+    private router: Router,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.projects = this.projectService.getProjects();

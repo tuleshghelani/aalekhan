@@ -1,20 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeadersComponent } from '../headers/headers.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ServiceDialogComponent } from '../service-dialog/service-dialog.component';
 
 @Component({
   selector: 'app-service',
   standalone: true,
   imports: [CommonModule, HeadersComponent, MatDialogModule],
+  providers: [MatDialog],
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.scss']
 })
-export class ServiceComponent {
+export class ServiceComponent implements OnInit {
 
-  constructor(private dialog:MatDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
