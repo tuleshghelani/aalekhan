@@ -1,4 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HeadersComponent } from '../headers/headers.component';
+import { RouterModule } from '@angular/router';
 import VanillaTilt from 'vanilla-tilt';
 import { ProjectService, Project } from '../services/project.service';
 import { ProjectDetailsPopupComponent } from '../project-details-popup/project-details-popup.component';
@@ -6,6 +9,8 @@ import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'app-all-projects',
+  standalone: true,
+  imports: [CommonModule, HeadersComponent, RouterModule],
   templateUrl: './all-projects.component.html',
   styleUrls: ['./all-projects.component.scss']
 })

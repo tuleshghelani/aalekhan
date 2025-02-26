@@ -1,10 +1,13 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-about-dialog',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule],
   templateUrl: './about-dialog.component.html',
   styleUrls: ['./about-dialog.component.scss']
 })

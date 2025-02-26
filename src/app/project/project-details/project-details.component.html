@@ -1,5 +1,9 @@
 <div class="header pt-4">
-    <app-headers [activePage]="'projects'"></app-headers>
+    <app-headers 
+      [activePage]="'projects'" 
+      [screenWidth]="0"
+      (actionEvent)="handleHeaderAction($event)">
+    </app-headers>
 </div>
 <div class="project-details-section">
     <div class="front-label">

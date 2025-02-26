@@ -1,12 +1,26 @@
-import { NgModule, AfterViewInit, Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import * as AOS from "aos";
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormControl, FormGroup } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { Meta, Title } from '@angular/platform-browser';
 
 // import { Swiper } from "swiper";
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterModule,
+    ReactiveFormsModule,
+    MatDialogModule
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
@@ -26,8 +40,6 @@ export class AppComponent implements OnInit {
 
   contactForm!: FormGroup
   carouselState = 'slideIn';
-  title = 'aalekhan';
-
   ball: any;
   isContactDialogOpen: boolean = false
   isAboutDialogOpen: boolean = false
@@ -44,7 +56,24 @@ export class AppComponent implements OnInit {
 
   serviceOption:string[] = ['RESEARCH','STRATEGY','IDENTITY','DIGITAL','ADVERTISING'];
 
-  constructor() { }
+  constructor(
+    private meta: Meta,
+    private title: Title
+  ) {
+    this.addMetaTags();
+  }
+
+  private addMetaTags() {
+    this.title.setTitle('Aalekhan - Professional Branding & Design Agency');
+    this.meta.addTags([
+      { name: 'description', content: 'Professional branding and advertising agency services' },
+      { name: 'keywords', content: 'branding, advertising, design, marketing, creative agency' },
+      { name: 'robots', content: 'index, follow' },
+      { property: 'og:title', content: 'Aalekhan - Professional Branding & Design Agency' },
+      { property: 'og:description', content: 'Professional branding and advertising agency services' },
+      { property: 'og:type', content: 'website' }
+    ]);
+  }
 
   carouselItems: any[] = [
     { image: "../assets/Elon_Musk.webp", name: "Elon Musk", details: "We Understand your brand's purpose, vision , value , audience competition, persona etc. through in-depth discovery session to establish an apt positioning strategy" },

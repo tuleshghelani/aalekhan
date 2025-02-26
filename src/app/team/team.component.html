@@ -22,7 +22,11 @@
             </path>
         </svg>
     </div>
-    <app-headers [activePage]="'service'"></app-headers>
+    <app-headers 
+        [activePage]="'service'" 
+        [screenWidth]="0"
+        (actionEvent)="handleHeaderAction($event)">
+    </app-headers>
     <div class="team-content">
         <div class="team-intro">
             <h1 class="main-title">We Chase <span class="highlight">Extraordinary</span>.</h1>

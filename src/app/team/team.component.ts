@@ -1,4 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HeadersComponent } from '../headers/headers.component';
+import { RouterModule } from '@angular/router';
 
 interface TeamMember {
   name: string;
@@ -8,6 +11,8 @@ interface TeamMember {
 
 @Component({
   selector: 'app-team',
+  standalone: true,
+  imports: [CommonModule, HeadersComponent, RouterModule],
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss']
 })
@@ -70,5 +75,13 @@ export class TeamComponent implements OnInit, AfterViewInit {
     teamMembers.forEach((member) => {
       observer.observe(member);
     });
+  }
+
+  handleHeaderAction(action: string) {
+    if (action === 'contact') {
+      // Handle contact dialog
+    } else if (action === 'about') {
+      // Handle about dialog
+    }
   }
 }

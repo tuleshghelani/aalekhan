@@ -1,12 +1,39 @@
-import { NgModule, AfterViewInit, Component, OnInit, HostListener } from '@angular/core';
+import { NgModule, AfterViewInit, Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 // import * as fullpage from 'fullpage.js';
 declare const fullpage: any; // Provide type annotation for fullpage
 import * as AOS from "aos";
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { HeadersComponent } from '../headers/headers.component';
+import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
+import { TransferState, makeStateKey } from '@angular/platform-browser';
+import { environment } from '../../environments/environment';
+
+const META_KEY = makeStateKey<boolean>('meta-data');
+const STRUCTURED_DATA_KEY = makeStateKey<string>('structured-data');
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatRadioModule,
+    HeadersComponent
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
@@ -22,7 +49,9 @@ import { FormControl, FormGroup } from '@angular/forms';
     ])
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  private readonly baseUrl = environment.baseUrl;
+
   disabled = false;
   max = 100;
   min = 0;
@@ -32,7 +61,6 @@ export class HomeComponent implements OnInit {
 
   contactForm!: FormGroup
   carouselState = 'slideIn';
-  title = 'aalekhan';
 
   ball: any;
   isContactDialogOpen: boolean = false
@@ -47,11 +75,18 @@ export class HomeComponent implements OnInit {
   minBudget: number = 50000;
   maxBudget: number = 500000;
   step: number = 10000;
-  screenWidth: any
+  screenWidth: number = 0;
 
   serviceOption: string[] = ['RESEARCH', 'STRATEGY', 'IDENTITY', 'DIGITAL', 'ADVERTISING'];
 
-  constructor() { }
+  constructor(
+    private meta: Meta,
+    private title: Title,
+    private transferState: TransferState
+  ) {
+    this.initForm();
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.screenWidth = window.innerWidth;
@@ -64,23 +99,10 @@ export class HomeComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.setMetaData();
+    this.setStructuredData();
+    this.initializeAOS();
     this.onResize()
-    this.contactForm = new FormGroup({
-      first_name: new FormControl(),
-      last_name: new FormControl(),
-      company_name: new FormControl(),
-      how_can_i_help: new FormControl(),
-      current_nedd: new FormControl(),
-      website_name: new FormControl(),
-      any_project: new FormControl(),
-      email: new FormControl(),
-      contact_number: new FormControl(),
-      what_want_from_us: new FormControl(),
-      budget: new FormControl()
-    })
-    this.startCarousel();
-    // this.ball = document.querySelector('.ball');
-    // AOS.init();
   }
 
   ngAfterViewInit() {
@@ -152,7 +174,6 @@ export class HomeComponent implements OnInit {
     this.isContactDialogOpen = false;
   }
 
-
   // Update ball position
   animate() {
     //Determine distance between ball and mouse
@@ -197,4 +218,120 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  private initForm() {
+    this.contactForm = new FormGroup({
+      first_name: new FormControl(''),
+      last_name: new FormControl(''),
+      company_name: new FormControl(''),
+      how_can_i_help: new FormControl(''),
+      current_nedd: new FormControl(''),
+      website_name: new FormControl(''),
+      any_project: new FormControl(''),
+      email: new FormControl(''),
+      contact_number: new FormControl(''),
+      what_want_from_us: new FormControl(''),
+      budget: new FormControl('')
+    });
+  }
+
+  ngOnDestroy() {
+    this.transferState.remove(META_KEY);
+    this.transferState.remove(STRUCTURED_DATA_KEY);
+  }
+
+  private setMetaData() {
+    if (this.transferState.hasKey(META_KEY)) return;
+
+    this.title.setTitle('Aalekhan - Premium Branding & Creative Design Agency & Software Development');
+    
+    const metaTags = [
+      { name: 'description', content: 'Leading branding and creative design agency specializing in brand strategy, graphic design, web development, and digital advertising. Transform your brand with our innovative solutions.' },
+      { name: 'keywords', content: 'branding agency, creative design, brand strategy, graphic design, web development, digital advertising, logo design, UI/UX design, brand identity, marketing solutions' },
+      { property: 'og:title', content: 'Aalekhan - Premium Branding & Creative Design Agency' },
+      { property: 'og:description', content: 'Transform your brand with our innovative design solutions and strategic branding services.' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: `${this.baseUrl}/assets/logo/aalekhan-logo.png` },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: 'Aalekhan Branding' }
+    ];
+
+    metaTags.forEach(tag => this.meta.updateTag(tag as MetaDefinition));
+    this.transferState.set(META_KEY, true);
+  }
+
+  private setStructuredData() {
+    if (this.transferState.hasKey(STRUCTURED_DATA_KEY)) return;
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Aalekhan Branding",
+      "description": "Premium branding and creative design agency offering comprehensive brand strategy, design, and digital solutions.",
+      "url": this.baseUrl,
+      "logo": `${this.baseUrl}/assets/logo/aalekhan-logo.png`,
+      "image": [
+        `${this.baseUrl}/assets/portfolio/project1.jpg`,
+        `${this.baseUrl}/assets/portfolio/project2.jpg`
+      ],
+      "priceRange": "₹₹₹",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/aalekhan-branding-a7b5b8282",
+        "https://www.instagram.com/aalekhan_branding",
+        "https://in.pinterest.com/aalekhan_branding/",
+        "https://www.behance.net/aalekhanbrandin"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Brand Strategy",
+              "description": "Comprehensive brand strategy development and positioning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Development",
+              "description": "Custom website design and development solutions"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Graphic Design",
+              "description": "Professional graphic design services for print and digital media"
+            }
+          }
+        ]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    this.transferState.set(STRUCTURED_DATA_KEY, JSON.stringify(structuredData));
+  }
+
+  private initializeAOS() {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false,
+      offset: 50
+    });
+  }
 }
