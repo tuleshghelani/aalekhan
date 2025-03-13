@@ -15,23 +15,24 @@
 
   <!-- ANIMATED GALLERY SECTION -->
   <div id="animated-gallery" class="animated-gallery-section">
-    <div class="gallery-title">OUR CREATIVE PORTFOLIO</div>
-    
     <div class="gallery-container">
-      <!-- Animated circles that will appear one by one -->
-      <div class="circle-wrapper">
-        <div class="animated-circle" *ngFor="let image of galleryImages; let i = index"
-             [ngClass]="{'active': currentImageIndex === i}">
+      <!-- Animated circles with random positions and sizes -->
+      <div class="circle-wrapper" #galleryContainer>
+        <div class="animated-circle" *ngFor="let circle of randomCircles; let i = index"
+             [ngClass]="{'active': circle.isActive}"
+             [ngStyle]="{
+               'left': circle.x,
+               'top': circle.y,
+               'width': circle.size + 'px',
+               'height': circle.size + 'px'
+             }">
           <div class="inner-circle">
-            <img [src]="image.src" [alt]="image.alt">
+            <img [src]="circle.image.src" [alt]="circle.image.alt">
           </div>
         </div>
       </div>
     </div>
     
-    <div class="gallery-action">
-      <a routerLink="/all-projects" class="view-all-btn">VIEW ALL PROJECTS</a>
-    </div>
   </div>
 
   <!-- SERVICE SECTION -->
