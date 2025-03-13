@@ -1201,3 +1201,66 @@ $black: #000000;
     transform: translate(0, 0);
   }
 }
+
+/* Add this after your animated-circle styles */
+.solid-circle {
+  position: absolute;
+  background: var(--secondary-color, #FBEB39);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(251, 235, 57, 0.4);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  z-index: 1; /* Lower z-index than image circles to give them priority */
+  
+  /* Default show time if not specified */
+  --show-time: 4000ms;
+  --grow-time: 200ms;
+  --fade-time: 1000ms;
+  
+  /* Active state animation with dynamic show time and floating effect */
+  &.active {
+    animation: 
+      solidCircleGrow var(--grow-time) forwards, 
+      circleShow var(--show-time) forwards var(--grow-time),
+      floatCircle calc(var(--show-time) * 1.2) ease-in-out var(--grow-time) infinite,
+      circleFade var(--fade-time) forwards calc(var(--grow-time) + var(--show-time));
+  }
+  
+  /* Responsive sizes */
+  @media (max-width: 992px) {
+    &.active {
+      max-width: 150px;
+      max-height: 150px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    &.active {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    &.active {
+      max-width: 75px;
+      max-height: 75px;
+    }
+  }
+}
+
+/* Animation for solid circle growth (faster than image circles) */
+@keyframes solidCircleGrow {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
