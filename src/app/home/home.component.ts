@@ -27,6 +27,7 @@ interface RandomCircle {
   size: number;
   image: { src: string, alt: string };
   isActive: boolean;
+  showTime?: number;
 }
 
 @Component({
@@ -117,7 +118,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private minSize: number = 264; // 7cm equivalent in pixels at 96 DPI
   private maxSize: number = 500; // 15cm equivalent in pixels at 96 DPI
   private activeCircleTimeout: any;
-  private circleDuration: number = 3200; // 1.5s grow + 2.5s show (total 4s before fade)
+  private circleDuration: number = 0; // Will be calculated dynamically per circle
+  private growDuration: number = 700; // 0.7s grow time in milliseconds
 
   private resizeObserver: ResizeObserver | null = null;
 
@@ -540,6 +542,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       circle.x = newPosition.x + '%';
       circle.y = newPosition.y + '%';
       
+      // Generate random show time between 2-6 seconds
+      const showTime = this.getRandomShowTime();
+      
+      // Calculate total duration (grow + show + fade)
+      const totalDuration = this.growDuration + showTime + 1000; // 0.7s grow + show time + 1s fade
+      
+      // Add the showTime as a property to the circle
+      circle.showTime = showTime;
+      
       // Activate the circle
       circle.isActive = true;
       
@@ -547,12 +558,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         circle.isActive = false;
         
-        // Handle repositioning after fade out
+        // Reposition the circle for next appearance after it fades out
         setTimeout(() => {
           // No need to update position immediately as it will be updated
           // when the circle becomes active again
         }, 1000);
-      }, this.circleDuration);
+      }, totalDuration - 1000); // Subtract fade time
       
       // Remove from the inactive list
       inactiveCircles.splice(randomIndex, 1);
@@ -571,7 +582,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const containerWidth = this.galleryContainer?.clientWidth || 1000;
     const containerHeight = this.galleryContainer?.clientHeight || 500;
     
-    // Calculate size in pixels (convert from percentage to absolute)
+    // Calculate size in pixels
     const calculatedSize = currentCircleSize;
     
     // Maximum attempts to find non-overlapping position
@@ -582,9 +593,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     const activeCircles = this.randomCircles.filter(c => c.isActive);
     
     while (attempts < maxAttempts) {
-      // Get random position in pixels
-      const xPixels = (this.getRandomPosition(75, 25) / 100) * containerWidth;
-      const yPixels = (this.getRandomPosition(75, 25) / 100) * containerHeight;
+      // Use more of the available space (20%-80% of container width/height)
+      const xPixels = (this.getRandomPosition(80, 20) / 100) * containerWidth;
+      const yPixels = (this.getRandomPosition(80, 20) / 100) * containerHeight;
       
       // Check if this position would cause overlap with any active circle
       let overlapping = false;
@@ -611,8 +622,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       // If no overlap found, return this position
       if (!overlapping) {
         return { 
-          x: Math.max(5, Math.min(95, (xPixels / containerWidth) * 100)), 
-          y: Math.max(5, Math.min(95, (yPixels / containerHeight) * 100)) 
+          x: Math.max(20, Math.min(80, (xPixels / containerWidth) * 100)), 
+          y: Math.max(20, Math.min(80, (yPixels / containerHeight) * 100)) 
         };
       }
       
@@ -622,8 +633,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     // If we can't find a non-overlapping position after max attempts,
     // place it randomly but at least try to keep it fully in view
     return { 
-      x: this.getRandomPosition(75, 25), 
-      y: this.getRandomPosition(75, 25) 
+      x: this.getRandomPosition(80, 20), 
+      y: this.getRandomPosition(80, 20) 
     };
   }
 
@@ -654,5 +665,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       circle.x = newPosition.x + '%';
       circle.y = newPosition.y + '%';
     });
+  }
+
+  // Add this method to generate a random show time between 2-6 seconds
+  private getRandomShowTime(): number {
+    return Math.floor(Math.random() * 4000) + 2000; // 2000-6000ms (2-6s)
   }
 }
