@@ -944,3 +944,248 @@ $black: #000000;
     bottom: 25px;
     right: 85px;
 }
+
+/* Image Gallery Section */
+.animated-gallery-section {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background-color: #123751;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  /* Add dynamic background */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(251, 235, 57, 0.08) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(251, 235, 57, 0.08) 0%, transparent 20%);
+  
+  @media (max-width: 992px) {
+    height: 70vh;
+  }
+  
+  @media (max-width: 768px) {
+    height: 60vh;
+  }
+  
+  @media (max-width: 480px) {
+    height: 50vh;
+  }
+}
+
+.gallery-title {
+  font-size: 3rem;
+  color: rgba(251, 235, 57, 0.8);
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(251, 235, 57, 0.3);
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
+}
+
+.preloaded-gallery {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.static-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: #FBEB39;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(251, 235, 57, 0.4);
+  
+  &.circle-1 {
+    top: 15%;
+    left: 25%;
+    animation: pulse1 4s infinite alternate;
+  }
+  
+  &.circle-2 {
+    top: 50%;
+    left: 15%;
+    animation: pulse2 5s infinite alternate;
+  }
+  
+  &.circle-3 {
+    top: 30%;
+    right: 25%;
+    animation: pulse3 6s infinite alternate;
+  }
+  
+  &.circle-4 {
+    bottom: 15%;
+    right: 30%;
+    animation: pulse4 5.5s infinite alternate;
+  }
+  
+  &.circle-5 {
+    bottom: 25%;
+    left: 35%;
+    animation: pulse5 4.5s infinite alternate;
+  }
+  
+  @media (max-width: 992px) {
+    width: 150px;
+    height: 150px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 80px;
+    
+    &.circle-1 {
+      top: 20%;
+      left: 20%;
+    }
+    
+    &.circle-2 {
+      top: 60%;
+      left: 10%;
+    }
+    
+    &.circle-3 {
+      top: 25%;
+      right: 15%;
+    }
+    
+    &.circle-4 {
+      bottom: 15%;
+      right: 20%;
+    }
+    
+    &.circle-5 {
+      bottom: 35%;
+      left: 30%;
+    }
+  }
+}
+
+.inner-circle {
+  width: 85%;
+  height: 85%;
+  background: white;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.inner-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+.static-circle:hover .inner-circle img {
+  transform: scale(1.1);
+}
+
+.gallery-action {
+  margin-top: 40px;
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #FBEB39;
+  color: #123751;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(251, 235, 57, 0.3);
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(251, 235, 57, 0.4);
+    background-color: white;
+  }
+}
+
+/* Pulse animations for circles */
+@keyframes pulse1 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05) translateY(-10px);
+  }
+}
+
+@keyframes pulse2 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08) translateX(5px);
+  }
+}
+
+@keyframes pulse3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06) translateY(8px);
+  }
+}
+
+@keyframes pulse4 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.04) translateX(-7px);
+  }
+}
+
+@keyframes pulse5 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.07) translateY(-5px);
+  }
+}
+
+/* Retain the original container styles but make it a fallback */
+.gallery-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}

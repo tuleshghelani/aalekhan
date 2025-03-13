@@ -1,4 +1,4 @@
-import { NgModule, AfterViewInit, Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { NgModule, AfterViewInit, Component, OnInit, HostListener, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 // import * as fullpage from 'fullpage.js';
 declare const fullpage: any; // Provide type annotation for fullpage
 import * as AOS from "aos";
@@ -16,6 +16,7 @@ import { HeadersComponent } from '../headers/headers.component';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { environment } from '../../environments/environment';
+import { GalleryEffectsService } from '../gallery-effects.service';
 
 const META_KEY = makeStateKey<boolean>('meta-data');
 const STRUCTURED_DATA_KEY = makeStateKey<string>('structured-data');
@@ -79,10 +80,26 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   serviceOption: string[] = ['RESEARCH', 'STRATEGY', 'IDENTITY', 'DIGITAL', 'ADVERTISING'];
 
+  @ViewChild('galleryContainer') galleryContainerRef: ElementRef | undefined;
+  private galleryContainer: HTMLElement | null = null;
+  private isGalleryActive: boolean = false;
+  private circleShowDuration: number = 3000;
+  private currentImageIndex: number = 0;
+  private galleryImages: string[] = [
+    'assets/all-projects/box.jpg',
+    'assets/all-projects/pusti_art_01.jpg',
+    'assets/all-projects/brochure_front.jpg',
+    'assets/all-projects/brochure_inner_pages.jpg',
+    'assets/all-projects/letterhead_business_card.jpg',
+    'assets/all-projects/florena_post_1.jpg',
+    'assets/all-projects/florena_post_2.jpg',
+  ];
+
   constructor(
     private meta: Meta,
     private title: Title,
-    private transferState: TransferState
+    private transferState: TransferState,
+    private galleryEffects: GalleryEffectsService
   ) {
     this.initForm();
   }
@@ -102,9 +119,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngAfterViewInit() {
     var video: any = document.getElementById("bgVideo");
-    video.muted = true;
+    if (video) {
+      video.muted = true;
+    }
     this.ball = document.querySelector('.ball');
-    // this.animate();
+    
+    // Simplified gallery initialization that will work
+    setTimeout(() => {
+      this.setupGallery();
+    }, 1000);
   }
   
   onRangeValueChange(event: any) {
@@ -207,6 +230,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.transferState.remove(META_KEY);
     this.transferState.remove(STRUCTURED_DATA_KEY);
+    this.isGalleryActive = false;
+    if (this.galleryContainer) {
+      this.galleryEffects.removeParticleEffects(this.galleryContainer);
+      const circles = this.galleryContainer.querySelectorAll('.image-circle');
+      circles.forEach(circle => {
+        if (circle.parentNode === this.galleryContainer) {
+          this.galleryContainer?.removeChild(circle);
+        }
+      });
+    }
   }
 
   private setMetaData() {
@@ -302,6 +335,53 @@ export class HomeComponent implements OnInit, OnDestroy {
       once: true,
       mirror: false,
       offset: 50
+    });
+  }
+
+  private setupGallery(): void {
+    // Preload images to ensure they're cached for the static gallery
+    this.preloadGalleryImages();
+    
+    // Apply subtle particle effects to the gallery section rather than container
+    const gallerySection = document.getElementById('animated-gallery');
+    if (gallerySection) {
+      this.galleryEffects.addParticleEffects(gallerySection);
+    }
+    
+    // Add click handlers for static circles to make them interactive
+    this.setupCircleInteractions();
+  }
+  
+  private setupCircleInteractions(): void {
+    const circles = document.querySelectorAll('.static-circle');
+    circles.forEach((circle, index) => {
+      circle.addEventListener('click', () => {
+        // Navigate to project details or open a modal with project info
+        console.log(`Circle ${index + 1} clicked`);
+        // You could add logic here to open your project details
+      });
+    });
+  }
+  
+  private preloadGalleryImages(): void {
+    this.galleryImages.forEach((src, index) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => console.log(`Image ${index + 1} loaded: ${src}`);
+      img.onerror = () => console.error(`Failed to load image ${index + 1}: ${src}`);
+    });
+  }
+
+  public debugGallery(): void {
+    console.log('Debug Gallery clicked');
+    alert('Gallery debug triggered! Check if static circles are visible.');
+    
+    // List all static circles for debugging
+    const circles = document.querySelectorAll('.static-circle');
+    console.log(`Found ${circles.length} static circles`);
+    
+    circles.forEach((circle, index) => {
+      console.log(`Circle ${index + 1}:`, circle);
     });
   }
 }
