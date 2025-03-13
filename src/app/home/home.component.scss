@@ -979,7 +979,7 @@ $black: #000000;
 .gallery-title {
   font-size: 3rem;
   color: rgba(251, 235, 57, 0.8);
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
@@ -995,7 +995,7 @@ $black: #000000;
   }
 }
 
-.preloaded-gallery {
+.gallery-container {
   position: relative;
   width: 100%;
   height: 400px;
@@ -1004,10 +1004,16 @@ $black: #000000;
   align-items: center;
 }
 
-.static-circle {
+.circle-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.animated-circle {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 1px;
+  height: 1px;
   background: #FBEB39;
   border-radius: 50%;
   display: flex;
@@ -1015,72 +1021,83 @@ $black: #000000;
   align-items: center;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(251, 235, 57, 0.4);
+  opacity: 0;
+  transform: scale(0);
   
-  &.circle-1 {
+  /* Different positions for different circles */
+  &:nth-child(5n+1) {
     top: 15%;
     left: 25%;
-    animation: pulse1 4s infinite alternate;
   }
   
-  &.circle-2 {
+  &:nth-child(5n+2) {
     top: 50%;
     left: 15%;
-    animation: pulse2 5s infinite alternate;
   }
   
-  &.circle-3 {
+  &:nth-child(5n+3) {
     top: 30%;
     right: 25%;
-    animation: pulse3 6s infinite alternate;
   }
   
-  &.circle-4 {
+  &:nth-child(5n+4) {
     bottom: 15%;
     right: 30%;
-    animation: pulse4 5.5s infinite alternate;
   }
   
-  &.circle-5 {
+  &:nth-child(5n+5) {
     bottom: 25%;
     left: 35%;
-    animation: pulse5 4.5s infinite alternate;
+  }
+  
+  /* Active state animation */
+  &.active {
+    animation: circleGrow 2s forwards, 
+               circleShow 3s forwards,
+               circleFade 1s forwards 5s;
   }
   
   @media (max-width: 992px) {
-    width: 150px;
-    height: 150px;
+    &.active {
+      width: 150px;
+      height: 150px;
+    }
   }
   
   @media (max-width: 768px) {
-    width: 120px;
-    height: 120px;
+    &.active {
+      width: 120px;
+      height: 120px;
+    }
   }
   
   @media (max-width: 480px) {
-    width: 80px;
-    height: 80px;
+    &.active {
+      width: 80px;
+      height: 80px;
+    }
     
-    &.circle-1 {
+    &:nth-child(5n+1) {
       top: 20%;
       left: 20%;
     }
     
-    &.circle-2 {
+    &:nth-child(5n+2) {
       top: 60%;
       left: 10%;
     }
     
-    &.circle-3 {
+    &:nth-child(5n+3) {
       top: 25%;
       right: 15%;
     }
     
-    &.circle-4 {
+    &:nth-child(5n+4) {
       bottom: 15%;
       right: 20%;
     }
     
-    &.circle-5 {
+    &:nth-child(5n+5) {
       bottom: 35%;
       left: 30%;
     }
@@ -1097,6 +1114,8 @@ $black: #000000;
   justify-content: center;
   align-items: center;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: innerCircleFadeIn 0.5s forwards 2s;
 }
 
 .inner-circle img {
@@ -1107,7 +1126,7 @@ $black: #000000;
   transition: transform 0.5s ease;
 }
 
-.static-circle:hover .inner-circle img {
+.animated-circle:hover .inner-circle img {
   transform: scale(1.1);
 }
 
@@ -1135,57 +1154,65 @@ $black: #000000;
   }
 }
 
-/* Pulse animations for circles */
-@keyframes pulse1 {
+/* Animation Keyframes for the growing circle effect */
+@keyframes circleGrow {
   0% {
-    transform: scale(1);
+    width: 1px;
+    height: 1px;
+    transform: scale(0);
+    opacity: 0;
   }
   100% {
-    transform: scale(1.05) translateY(-10px);
+    width: 200px;
+    height: 200px;
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-@keyframes pulse2 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.08) translateX(5px);
+@keyframes circleShow {
+  0%, 100% {
+    opacity: 1;
   }
 }
 
-@keyframes pulse3 {
+@keyframes circleFade {
   0% {
+    opacity: 1;
     transform: scale(1);
   }
   100% {
-    transform: scale(1.06) translateY(8px);
+    opacity: 0;
+    transform: scale(0);
   }
 }
 
-@keyframes pulse4 {
+@keyframes innerCircleFadeIn {
   0% {
-    transform: scale(1);
+    opacity: 0;
   }
   100% {
-    transform: scale(1.04) translateX(-7px);
+    opacity: 1;
   }
 }
 
-@keyframes pulse5 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.07) translateY(-5px);
-  }
-}
-
-/* Retain the original container styles but make it a fallback */
-.gallery-container {
+/* Add floating particle styles */
+.gallery-particle {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
+  background-color: rgba(251, 235, 57, 0.2);
+  border-radius: 50%;
   pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(
+      calc(30px - 60px * var(--random-x, 0.5)), 
+      calc(20px - 40px * var(--random-y, 0.5))
+    );
+  }
 }

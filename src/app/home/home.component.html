@@ -15,42 +15,22 @@
 
   <!-- ANIMATED GALLERY SECTION -->
   <div id="animated-gallery" class="animated-gallery-section">
+    <div class="gallery-title">OUR CREATIVE PORTFOLIO</div>
     
-    <div class="preloaded-gallery">
-      <!-- Static circles that will always be visible -->
-      <div class="static-circle circle-1">
-        <div class="inner-circle">
-          <img src="assets/all-projects/box.jpg" alt="Project 1">
-        </div>
-      </div>
-      <div class="static-circle circle-2">
-        <div class="inner-circle">
-          <img src="assets/all-projects/brochure_front.jpg" alt="Project 2">
-        </div>
-      </div>
-      <div class="static-circle circle-3">
-        <div class="inner-circle">
-          <img src="assets/all-projects/pusti_art_01.jpg" alt="Project 3">
-        </div>
-      </div>
-      <div class="static-circle circle-4">
-        <div class="inner-circle">
-          <img src="assets/all-projects/florena_post_1.jpg" alt="Project 4">
-        </div>
-      </div>
-      <div class="static-circle circle-5">
-        <div class="inner-circle">
-          <img src="assets/all-projects/letterhead_business_card.jpg" alt="Project 5">
+    <div class="gallery-container">
+      <!-- Animated circles that will appear one by one -->
+      <div class="circle-wrapper">
+        <div class="animated-circle" *ngFor="let image of galleryImages; let i = index"
+             [ngClass]="{'active': currentImageIndex === i}">
+          <div class="inner-circle">
+            <img [src]="image.src" [alt]="image.alt">
+          </div>
         </div>
       </div>
     </div>
     
-    <!-- Dynamic gallery container as fallback -->
-    <div #galleryContainer class="gallery-container"></div>
-    
-    <!-- View All Projects Button -->
     <div class="gallery-action">
-      <a href="/all-projects" class="view-all-btn">View All Projects</a>
+      <a routerLink="/all-projects" class="view-all-btn">VIEW ALL PROJECTS</a>
     </div>
   </div>
 

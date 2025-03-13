@@ -84,16 +84,26 @@ export class HomeComponent implements OnInit, OnDestroy {
   private galleryContainer: HTMLElement | null = null;
   private isGalleryActive: boolean = false;
   private circleShowDuration: number = 3000;
-  private currentImageIndex: number = 0;
-  private galleryImages: string[] = [
-    'assets/all-projects/box.jpg',
-    'assets/all-projects/pusti_art_01.jpg',
-    'assets/all-projects/brochure_front.jpg',
-    'assets/all-projects/brochure_inner_pages.jpg',
-    'assets/all-projects/letterhead_business_card.jpg',
-    'assets/all-projects/florena_post_1.jpg',
-    'assets/all-projects/florena_post_2.jpg',
+  public currentImageIndex: number = -1;
+  public galleryImages = [
+    { src: 'assets/all-projects/box.jpg', alt: 'Packaging Design' },
+    { src: 'assets/all-projects/brochure_front.jpg', alt: 'Brochure Design' },
+    { src: 'assets/all-projects/pusti_art_01.jpg', alt: 'Art Direction' },
+    { src: 'assets/all-projects/florena_post_1.jpg', alt: 'Social Media Design' },
+    { src: 'assets/all-projects/letterhead_business_card.jpg', alt: 'Corporate Identity' }
   ];
+  
+  private positions: { x: string, y: string }[] = [
+    { x: '30%', y: '30%' },
+    { x: '70%', y: '30%' },
+    { x: '50%', y: '50%' },
+    { x: '30%', y: '70%' },
+    { x: '70%', y: '70%' }
+  ];
+  
+  private animationTimeout: any;
+  private animationDuration: number = 5000; // 5 seconds per circle (2s grow, 3s show)
+  private galleryInterval: any;
 
   constructor(
     private meta: Meta,
@@ -115,6 +125,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.setStructuredData();
     this.initializeAOS();
     this.onResize()
+    
+    // Initialize the gallery with a slight delay to ensure DOM is ready
+    setTimeout(() => {
+      this.initGallery();
+    }, 1000);
   }
 
   ngAfterViewInit() {
@@ -124,9 +139,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     this.ball = document.querySelector('.ball');
     
-    // Simplified gallery initialization that will work
+    // Start the sequential gallery animation
     setTimeout(() => {
-      this.setupGallery();
+      this.initGallery();
     }, 1000);
   }
   
@@ -239,6 +254,15 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.galleryContainer?.removeChild(circle);
         }
       });
+    }
+    
+    if (this.animationTimeout) {
+      clearTimeout(this.animationTimeout);
+    }
+    
+    // Clear the interval when component is destroyed
+    if (this.galleryInterval) {
+      clearInterval(this.galleryInterval);
     }
   }
 
@@ -366,9 +390,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   private preloadGalleryImages(): void {
     this.galleryImages.forEach((src, index) => {
       const img = new Image();
-      img.src = src;
-      img.onload = () => console.log(`Image ${index + 1} loaded: ${src}`);
-      img.onerror = () => console.error(`Failed to load image ${index + 1}: ${src}`);
+      img.src = src.src;
+      img.onload = () => console.log(`Image ${index + 1} loaded: ${src.src}`);
+      img.onerror = () => console.error(`Failed to load image ${index + 1}: ${src.src}`);
     });
   }
 
@@ -383,5 +407,28 @@ export class HomeComponent implements OnInit, OnDestroy {
     circles.forEach((circle, index) => {
       console.log(`Circle ${index + 1}:`, circle);
     });
+  }
+
+  initGallery() {
+    this.showNextImage();
+    
+    // Set up interval to show images in sequence
+    this.galleryInterval = setInterval(() => {
+      this.showNextImage();
+    }, 6000); // Total time: 2s grow + 3s show + 1s fade = 6s
+  }
+  
+  showNextImage() {
+    // First, reset current image if needed
+    if (this.currentImageIndex >= 0) {
+      this.currentImageIndex = -1;
+      
+      // Allow time for fade out animation to complete
+      setTimeout(() => {
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.galleryImages.length;
+      }, 100);
+    } else {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.galleryImages.length;
+    }
   }
 }
