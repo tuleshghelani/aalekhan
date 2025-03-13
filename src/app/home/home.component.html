@@ -25,7 +25,9 @@
                'top': circle.y,
                'width': circle.size + 'px',
                'height': circle.size + 'px',
-               '--show-time': (circle.showTime || 4000) + 'ms'
+               '--show-time': (circle.showTime || 4000) + 'ms',
+               '--float-x': (circle.floatX || 0),
+               '--float-y': (circle.floatY || 0)
              }">
           <div class="inner-circle">
             <img [src]="circle.image.src" [alt]="circle.image.alt">

@@ -28,6 +28,19 @@ interface RandomCircle {
   image: { src: string, alt: string };
   isActive: boolean;
   showTime?: number;
+  floatX?: number; // Random float X direction multiplier
+  floatY?: number; // Random float Y direction multiplier
+}
+
+// Add this interface for solid circles
+interface SolidCircle {
+  x: string;
+  y: string;
+  size: number;
+  isActive: boolean;
+  showTime?: number;
+  floatX?: number;
+  floatY?: number;
 }
 
 @Component({
@@ -122,6 +135,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   private growDuration: number = 700; // 0.7s grow time in milliseconds
 
   private resizeObserver: ResizeObserver | null = null;
+
+  // Add these properties for solid circles
+  public solidCircles: SolidCircle[] = [];
+  private maxActiveSolidCircles: number = 3;
+  private minSolidSize: number = 75; // 2cm equivalent in pixels
+  private maxSolidSize: number = 189; // 5cm equivalent in pixels
 
   constructor(
     private meta: Meta,
@@ -544,6 +563,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       
       // Generate random show time between 2-6 seconds
       const showTime = this.getRandomShowTime();
+      
+      // Add random float parameters for unique movement
+      circle.floatX = (Math.random() * 2 - 1); // Value between -1 and 1
+      circle.floatY = (Math.random() * 2 - 1); // Value between -1 and 1
       
       // Calculate total duration (grow + show + fade)
       const totalDuration = this.growDuration + showTime + 1000; // 0.7s grow + show time + 1s fade

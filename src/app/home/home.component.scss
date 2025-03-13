@@ -1037,17 +1037,23 @@ $black: #000000;
   transition: transform 0.5s ease, opacity 0.5s ease;
   z-index: 2;
   
-  /* Active state animation */
+  /* Default show time if not specified */
+  --show-time: 4000ms;
+  --grow-time: 700ms;
+  --fade-time: 1000ms;
+  
+  /* Active state animation with dynamic show time and floating effect */
   &.active {
-    animation: circleGrow 0.7s forwards, 
-               circleShow 2.5s forwards 0.7s,
-               circleFade 1s forwards 4s;
+    animation: 
+      circleGrow var(--grow-time) forwards, 
+      circleShow var(--show-time) forwards var(--grow-time),
+      floatCircle calc(var(--show-time) * 1.2) ease-in-out var(--grow-time) infinite,
+      circleFade var(--fade-time) forwards calc(var(--grow-time) + var(--show-time));
   }
   
-  /* Responsive adjustments for different screen sizes */
+  /* Your existing responsive sizes */
   @media (max-width: 992px) {
     &.active {
-      /* Let dynamic sizing handle the responsive size, but cap if needed */
       max-width: 350px;
       max-height: 350px;
     }
@@ -1069,8 +1075,8 @@ $black: #000000;
 }
 
 .inner-circle {
-  width: 95%;
-  height: 95%;
+  width: 97%;
+  height: 97%;
   background: white;
   border-radius: 50%;
   overflow: hidden;
@@ -1174,5 +1180,24 @@ $black: #000000;
       calc(30px - 60px * var(--random-x, 0.5)), 
       calc(20px - 40px * var(--random-y, 0.5))
     );
+  }
+}
+
+/* Add a new floating animation for subtle movement */
+@keyframes floatCircle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5px, -5px);
+  }
+  50% {
+    transform: translate(0, 5px);
+  }
+  75% {
+    transform: translate(-5px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
