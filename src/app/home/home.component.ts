@@ -129,7 +129,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public randomCircles: RandomCircle[] = [];
   private maxActiveCircles: number = 3; // Maximum number of simultaneously active circles
   private minSize: number = 264; // 7cm equivalent in pixels at 96 DPI
-  private maxSize: number = 500; // 15cm equivalent in pixels at 96 DPI
+  private maxSize: number = 450; // 13.5cm equivalent in pixels at 96 DPI
   private activeCircleTimeout: any;
   private circleDuration: number = 0; // Will be calculated dynamically per circle
   private growDuration: number = 700; // 0.7s grow time in milliseconds
