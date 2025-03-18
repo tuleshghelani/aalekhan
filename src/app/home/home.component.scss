@@ -944,3 +944,39 @@ $black: #000000;
     bottom: 25px;
     right: 85px;
 }
+
+// bubble animation style
+.buble-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #FBEB39;
+    }
+    .bubble-content-heading {
+        position: absolute;
+        top: 6%;
+        left: 10%;
+        h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 80px;
+            line-height: 92px
+        }
+    };
+    .bubble {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-color: #123751;
+      transition: all 0.3s ease-in-out;
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        color: yellow;
+        font-size: 30px;
+      }
+    }

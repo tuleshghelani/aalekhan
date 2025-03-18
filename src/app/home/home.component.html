@@ -21,6 +21,21 @@
     <h2 class="mt-3" AutoType>Ethics Matters</h2><span>®</span>
   </div>
 
+  <!-- BUBBLE ANIMATION -->
+  <div class="buble-container" (click)="outsideClick($event)">
+    <!-- <canvas #canvas class="canvas"></canvas> -->
+     <div class="bubble-content-heading">
+      <h2>Brands built,</h2>
+      <h2>Just for You</h2>
+    </div>
+    <div *ngFor="let bubble of bubbles" 
+         [@bubbleState]="selectedBubble === bubble.id ? 'active' : 'inactive'"
+         (click)="selectBubble($event, bubble.id)" 
+         [ngStyle]="{ top: bubble.top + 'px', left: bubble.left + 'px' }"
+         class="bubble"><span *ngIf="selectedBubble === bubble.id">{{bubble.content}}</span>
+    </div>
+  </div> 
+
   <div class="heading-text row text-center d-block">
     <h1 class="pt-5">How we can help</h1>
     <div class="my-4"></div>

@@ -1,4 +1,4 @@
-import { NgModule, AfterViewInit, Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { NgModule, AfterViewInit, Component, OnInit, HostListener, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 // import * as fullpage from 'fullpage.js';
 declare const fullpage: any; // Provide type annotation for fullpage
 import * as AOS from "aos";
@@ -46,11 +46,29 @@ const STRUCTURED_DATA_KEY = makeStateKey<string>('structured-data');
         style({ transform: 'translateX(0)', transition: '1s' }),
         animate('400ms ease-in-out', style({ transform: 'translateX(100%)' }))
       ]),
+    ]),
+    trigger('bubbleState', [
+      state('inactive', style({
+        transform: 'scale(0.6)',
+        opacity: 0.5
+      })),
+      state('active', style({
+        transform: 'scale(1.5)',
+        opacity: 1,
+        boxShadow: '0px 0px 30px rgba(0, 170, 255, 0.9)'
+      })),
+      transition('inactive <=> active', animate('500ms ease-in-out'))
     ])
   ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private readonly baseUrl = environment.baseUrl;
+  @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+  bubbles = [
+    { id: 1, top: 430, left: 600, content:'Reach' },
+    { id: 2, top: 360, left: 1000, content:'Impression' },
+    { id: 3, top: 100, left: 1200, content:'Revenue' }
+  ];
 
   disabled = false;
   max = 100;
@@ -104,6 +122,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     var video: any = document.getElementById("bgVideo");
     video.muted = true;
     this.ball = document.querySelector('.ball');
+    // this.drawLines();
     // this.animate();
   }
   
@@ -303,5 +322,50 @@ export class HomeComponent implements OnInit, OnDestroy {
       mirror: false,
       offset: 50
     });
+  }
+
+  // bubbles = [
+  //   { id: 1 },
+  //   { id: 2 },
+  //   { id: 3 }
+  // ];
+  selectedBubble: number | null = null;
+
+  selectBubble(event: Event, id: number) {
+    event.stopPropagation(); // Prevent outside click from triggering immediately
+    this.selectedBubble = id;
+    // this.drawLines();
+  }
+
+  // selectBubble(id: number) {
+  //   this.selectedBubble = id;
+  // }
+
+  outsideClick(event: Event) {
+    this.selectedBubble = null;
+    // this.drawLines();
+  }
+
+  drawLines() {
+    const canvas = this.canvasRef.nativeElement;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'rgba(0, 170, 255, 0.7)';
+    ctx.lineWidth = 3;
+
+    for (let i = 0; i < this.bubbles.length; i++) {
+      for (let j = i + 1; j < this.bubbles.length; j++) {
+        const b1 = this.bubbles[i];
+        const b2 = this.bubbles[j];
+        ctx.beginPath();
+        ctx.moveTo(b1.left + 60, b1.top + 60);
+        ctx.lineTo(b2.left + 60, b2.top + 60);
+        ctx.stroke();
+      }
+    }
   }
 }
