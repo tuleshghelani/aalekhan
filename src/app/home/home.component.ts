@@ -1,5 +1,4 @@
 import { NgModule, AfterViewInit, Component, OnInit, HostListener, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import { NgModule, AfterViewInit, Component, OnInit, HostListener, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 // import * as fullpage from 'fullpage.js';
 declare const fullpage: any; // Provide type annotation for fullpage
 import * as AOS from "aos";
