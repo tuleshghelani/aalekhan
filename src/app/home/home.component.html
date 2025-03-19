@@ -13,6 +13,46 @@
     <button class="btn contact-btn" (click)="contactDialog()"><i class="fa-solid fa-pen"></i></button>
   </div>
 
+  <!-- ANIMATED GALLERY SECTION -->
+  <div id="animated-gallery" class="animated-gallery-section">
+    <div class="gallery-container">
+      <!-- Animated circles with random positions and sizes -->
+      <div class="circle-wrapper" #galleryContainer>
+        <div class="animated-circle" *ngFor="let circle of randomCircles; let i = index"
+             [ngClass]="{'active': circle.isActive}"
+             [ngStyle]="{
+               'left': circle.x,
+               'top': circle.y,
+               'width': circle.size + 'px',
+               'height': circle.size + 'px',
+               '--show-time': (circle.showTime || 4000) + 'ms',
+               '--float-x': (circle.floatX || 0),
+               '--float-y': (circle.floatY || 0)
+             }">
+          <div class="inner-circle">
+            <img [src]="circle.image.src" [alt]="circle.image.alt">
+          </div>
+        </div>
+        
+        <!-- New solid circles -->
+        <div class="solid-circle" *ngFor="let circle of solidCircles; let i = index"
+             [ngClass]="{'active': circle.isActive}"
+             [ngStyle]="{
+               'left': circle.x,
+               'top': circle.y,
+               'width': circle.size + 'px',
+               'height': circle.size + 'px',
+               '--show-time': (circle.showTime || 4000) + 'ms',
+               '--grow-time': '200ms',
+               '--float-x': (circle.floatX || 0),
+               '--float-y': (circle.floatY || 0)
+             }">
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
   <!-- SERVICE SECTION -->
   <div id="service" class="service">
 
