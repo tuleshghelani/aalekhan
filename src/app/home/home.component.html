@@ -1,14 +1,14 @@
 <!-- LANDING PAGE -->
 <div id="home" class="landing-page pt-4">
   <app-headers [screenWidth]="screenWidth" (actionEvent)="actionEvent($event)"></app-headers>
-    <div class="landing-text">
+    <!-- <div class="landing-text">
       <h1 class="mb-5">Explore your brands with</h1>
       <p class="mt-3 home-banner-text" AutoType>आलेखन Branding & Advertising Agency</p>
-    </div>
+    </div> -->
   
-    <video class="bg-video" id="bgVideo" muted autoplay loop>
+    <!-- <video class="bg-video" id="bgVideo" muted autoplay loop>
       <source src="../assets/landing-video.mp4" type="video/mp4">
-    </video>
+    </video> -->
   
     <button class="btn contact-btn" (click)="contactDialog()"><i class="fa-solid fa-pen"></i></button>
   </div>
@@ -170,22 +170,20 @@
   
   <!-- MARQUEE SECTION -->
   <div class="marquee">
-    <marquee class="marquee-text" behavior="alternate" scrollamount="20" height="100%" width="100%" direction="right">
-      <p>- Designing  Your<span> Imagination</span> into <span>Reality</span> -  Designing  Your<span> Imagination </span> into
-        <span>Reality</span> - Designing  Your<span> Imagination</span> into
-        <span>Reality</span> - Designing  Your<span> Imagination</span> into <span>Reality</span> -
-        Designing  Your<span> Imagination</span> into <span> Reality</span> - Designing  Your
-        <span> Imagination</span> into <span>Reality</span>
-      </p>
-    </marquee>
-    <marquee class="marquee-text" behavior="alternate" scrollamount="20" height="100%" width="100%" direction="left">
-      <p>- Designing  Dreams,<span> Crafting</span>  <span> Realities</span> -  Designing  Dreams,<span> Crafting </span> Realities
-        <span>Realities</span> - Designing  Dreams,<span> Crafting </span> 
-        <span>Realities</span> - Designing  Dreams,<span> Crafting </span>  <span>Realities</span> -
-        Designing  Dreams,<span> Crafting</span>  <span> Realities</span> - Designing  Dreams,
-        <span> Crafting</span>  <span>Realities</span>
-      </p>
-    </marquee>
+    <div class="marquee-text">
+      <!-- First line - moves right on scroll up, left on scroll down -->
+      <div class="marquee-content" [style.transform]="'translateX(' + scrollPosition + 'px)'">
+        <span>Designing Your<span class="highlight"> Imagination</span> into <span class="highlight">Reality</span></span>
+        <span>Designing Your<span class="highlight"> Imagination</span> into <span class="highlight">Reality</span></span>
+        <span>Designing Your<span class="highlight"> Imagination</span> into <span class="highlight">Reality</span></span>
+      </div>
+      <!-- Second line - moves opposite direction -->
+      <div class="marquee-content reverse" [style.transform]="'translateX(' + (-scrollPosition) + 'px)'">
+        <span>Creating Your<span class="highlight"> Vision</span> into <span class="highlight">Success</span></span>
+        <span>Creating Your<span class="highlight"> Vision</span> into <span class="highlight">Success</span></span>
+        <span>Creating Your<span class="highlight"> Vision</span> into <span class="highlight">Success</span></span>
+      </div>
+    </div>
   </div>
   
   <!-- Footer  -->

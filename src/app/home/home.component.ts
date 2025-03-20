@@ -119,6 +119,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   screenWidth: number = 0;
 
   serviceOption: string[] = ['RESEARCH', 'STRATEGY', 'IDENTITY', 'DIGITAL', 'ADVERTISING'];
+  textPosition1: number = 0; // First line position
+  textPosition2: number = 0; // Second line position (opposite direction)
+  containerWidth: number = 0;
+  textWidth: number = 0;
+
 
   @ViewChild('galleryContainer') galleryContainerRef: ElementRef | undefined;
   private galleryContainer: HTMLElement | null = null;
@@ -128,6 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public galleryImages = [
     { src: 'assets/all-projects/box.jpg', alt: 'Packaging Design' },
     { src: 'assets/all-projects/brochure_front.jpg', alt: 'Brochure Design' },
+  
     { src: 'assets/all-projects/pusti_art_01.jpg', alt: 'Art Direction' },
     { src: 'assets/all-projects/florena_post_1.jpg', alt: 'Social Media Design' },
     { src: 'assets/all-projects/letterhead_business_card.jpg', alt: 'Corporate Identity' },
@@ -162,6 +168,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private solidCircleInterval: any;
 
+  scrollPosition: number = 0;
+  lastScrollTop: number = 0;
+  scrollSpeed: number = 5; // Adjust this value to control scroll sensitivity
+
   constructor(
     private meta: Meta,
     private title: Title,
@@ -176,6 +186,31 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.screenWidth = window.innerWidth;
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Determine scroll direction and update position
+    if (st > this.lastScrollTop) {
+      // Scrolling down
+      this.scrollPosition -= this.scrollSpeed;
+    } else {
+      // Scrolling up
+      this.scrollPosition += this.scrollSpeed;
+    }
+    
+    // Reset position when text moves too far
+    const marqueeContent = document.querySelector('.marquee-content') as HTMLElement;
+    if (marqueeContent) {
+      const contentWidth = marqueeContent.offsetWidth / 3; // Divide by 3 since we have 3 copies
+      
+      if (Math.abs(this.scrollPosition) > contentWidth) {
+        this.scrollPosition = 0;
+      }
+    }
+    
+    this.lastScrollTop = st <= 0 ? 0 : st;
+  }
 
   ngOnInit() {
     this.setMetaData();
@@ -206,6 +241,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.initGallery();
     }, 1000);
+
+    this.updateDimensions();
+    window.addEventListener('resize', () => this.updateDimensions());
+  }
+
+  updateDimensions() {
+    const container = document.querySelector('.scroll-container') as HTMLElement;
+    const text = document.querySelector('.scroll-text-1') as HTMLElement;
+
+    if (container && text) {
+      this.containerWidth = container.offsetWidth;
+      this.textWidth = text.offsetWidth;
+      this.textPosition2 = this.containerWidth; // Start second text on the right
+    }
   }
   
   onRangeValueChange(event: any) {
