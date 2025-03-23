@@ -173,15 +173,217 @@
     <div class="marquee-text">
       <!-- First line - moves right on scroll up, left on scroll down -->
       <div class="marquee-content" [style.transform]="'translateX(' + scrollPosition + 'px)'">
-        <span>Designing Your<span class="highlight"> Imagination</span> into <span class="highlight">Reality</span></span>
-        <span>Designing Your<span class="highlight"> Imagination</span> into <span class="highlight">Reality</span></span>
-        <span>Designing Your<span class="highlight"> Imagination</span> into <span class="highlight">Reality</span></span>
-      </div>
+        <span class="odd-highlight">Designing <span class="odd-line">Your</span><span class="odd-highlight"> Imagination</span> into <span class="odd-line">Reality</span></span>
+        </div>
       <!-- Second line - moves opposite direction -->
       <div class="marquee-content reverse" [style.transform]="'translateX(' + (-scrollPosition) + 'px)'">
-        <span>Creating Your<span class="highlight"> Vision</span> into <span class="highlight">Success</span></span>
-        <span>Creating Your<span class="highlight"> Vision</span> into <span class="highlight">Success</span></span>
-        <span>Creating Your<span class="highlight"> Vision</span> into <span class="highlight">Success</span></span>
+        <span class="even-highlight">Creating <span class="even-line">Your</span><span class="even-highlight"> Vision</span> into <span class="even-line">Success</span></span>
+        </div>
+      <!-- Third line - moves opposite direction -->
+      <div class="marquee-content reverse" [style.transform]="'translateX(' + scrollPosition + 'px)'">
+        <span class="odd-highlight">Designing <span class="odd-line">Your</span><span class="odd-highlight"> Imagination</span> into <span class="odd-line">Reality</span></span></div>
+    </div>
+  </div>
+  <!--  STAPPER SHOWER -->
+  
+  <!-- BRAND VALUES SECTION -->
+  <div class="brand-values-section">
+    <div class="brand-values-container">
+      <div class="values-row">
+        <!-- Value 1 - Bold (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('bold')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'bold'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'bold'}" width="150" height="150" viewBox="0 0 150 150">
+              <path d="M45,40 C45,40 40,70 40,75 C40,110 75,120 90,100 C105,80 90,65 75,65 C60,65 55,80 70,90 C85,100 105,85 105,65 C105,45 85,35 75,35 C65,35 45,40 45,40 Z" stroke-width="2" fill="none"></path>
+              <path d="M60,50 L90,50" stroke-width="3" stroke-linecap="round"></path>
+              <path d="M70,65 L80,65" stroke-width="3" stroke-linecap="round"></path>
+              <path d="M55,80 C65,95 85,95 95,80" stroke-width="2" stroke-linecap="round" fill="none"></path>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'bold'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'bold'}">Bold</h3>
+          </div>
+        </div>
+
+        <!-- Value 2 - Brave (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('brave')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'brave'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'brave'}" width="150" height="150" viewBox="0 0 150 150">
+              <path d="M75,35 L90,65 L120,70 L100,95 L105,125 L75,110 L45,125 L50,95 L30,70 L60,65 Z" stroke-width="2" fill="none"></path>
+              <path d="M55,80 L65,90 L85,70" stroke-width="2" stroke-linecap="round" fill="none"></path>
+              <circle cx="75" cy="75" r="25" stroke-width="2" stroke-dasharray="3,3" fill="none"></circle>
+              <path d="M60,110 L75,50" stroke-width="1" stroke-dasharray="2,2"></path>
+              <path d="M90,110 L75,50" stroke-width="1" stroke-dasharray="2,2"></path>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'brave'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'brave'}">Brave</h3>
+          </div>
+        </div>
+
+        <!-- Value 3 - Strategic (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('strategic')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'strategic'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'strategic'}" width="150" height="150" viewBox="0 0 150 150">
+              <path d="M35,75 L55,40 L75,30 L95,40 L115,75 L95,110 L75,120 L55,110 Z" stroke-width="2" fill="none"></path>
+              <path d="M45,60 L105,90" stroke-width="1" stroke-dasharray="4,3"></path>
+              <path d="M45,90 L105,60" stroke-width="1" stroke-dasharray="4,3"></path>
+              <circle cx="75" cy="75" r="18" stroke-width="2" fill="none"></circle>
+              <circle cx="75" cy="75" r="8" stroke-width="2" fill="none"></circle>
+              <circle cx="75" cy="75" r="2"></circle>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'strategic'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'strategic'}">Strategic</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="values-row">
+        <!-- Value 4 - Creative (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('creative')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'creative'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'creative'}" width="150" height="150" viewBox="0 0 150 150">
+              <path d="M55,45 C40,65 35,90 45,110 C60,125 90,125 105,110 C115,90 110,65 95,45" stroke-width="2" fill="none" stroke-linecap="round"></path>
+              <path d="M55,55 C65,40 85,40 95,55" stroke-width="2" fill="none" stroke-linecap="round"></path>
+              <path d="M75,55 L75,85" stroke-width="2" stroke-linecap="round"></path>
+              <circle cx="65" cy="95" r="5" stroke-width="1.5"></circle>
+              <circle cx="85" cy="95" r="5" stroke-width="1.5"></circle>
+              <path d="M65,70 C70,75 80,75 85,70" stroke-width="1.5" fill="none"></path>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'creative'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'creative'}">Creative</h3>
+          </div>
+        </div>
+
+        <!-- Value 5 - Innovative (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('innovative')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'innovative'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'innovative'}" width="150" height="150" viewBox="0 0 150 150">
+              <circle cx="75" cy="75" r="35" stroke-width="2" fill="none"></circle>
+              <circle cx="75" cy="75" r="20" stroke-width="1.5" fill="none" stroke-dasharray="3,2"></circle>
+              <path d="M75,40 L75,50 M75,100 L75,110 M40,75 L50,75 M100,75 L110,75" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M53,53 L63,63 M87,63 L97,53 M53,97 L63,87 M87,87 L97,97" stroke-width="2" stroke-linecap="round"></path>
+              <circle cx="75" cy="75" r="5" stroke-width="1.5" fill="none"></circle>
+              <circle cx="75" cy="75" r="2"></circle>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'innovative'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'innovative'}">Innovative</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="values-row">
+        <!-- Value 6 - Collaborative (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('collaborative')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'collaborative'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'collaborative'}" width="150" height="150" viewBox="0 0 150 150">
+              <path d="M50,50 C42,50 35,57 35,65 C35,73 42,80 50,80 C58,80 65,73 65,65 C65,57 58,50 50,50 Z" stroke-width="2" fill="none"></path>
+              <path d="M100,50 C108,50 115,57 115,65 C115,73 108,80 100,80 C92,80 85,73 85,65 C85,57 92,50 100,50 Z" stroke-width="2" fill="none"></path>
+              <path d="M75,100 C67,100 60,107 60,115 C60,123 67,130 75,130 C83,130 90,123 90,115 C90,107 83,100 75,100 Z" stroke-width="2" fill="none"></path>
+              <path d="M50,80 L65,105 M100,80 L85,105" stroke-width="1.5" stroke-linecap="round"></path>
+              <path d="M55,65 L95,65" stroke-width="1.5" stroke-dasharray="4,2"></path>
+              <circle cx="50" cy="65" r="3"></circle>
+              <circle cx="100" cy="65" r="3"></circle>
+              <circle cx="75" cy="115" r="3"></circle>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'collaborative'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'collaborative'}">Collaborative</h3>
+          </div>
+        </div>
+
+        <!-- Value 7 - Precise (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('precise')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'precise'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'precise'}" width="150" height="150" viewBox="0 0 150 150">
+              <circle cx="75" cy="75" r="40" stroke-width="1" fill="none" stroke-dasharray="3,2"></circle>
+              <circle cx="75" cy="75" r="30" stroke-width="1.5" fill="none"></circle>
+              <circle cx="75" cy="75" r="20" stroke-width="1" fill="none" stroke-dasharray="2,1"></circle>
+              <circle cx="75" cy="75" r="10" stroke-width="1.5" fill="none"></circle>
+              <circle cx="75" cy="75" r="3"></circle>
+              <path d="M75,35 L75,45 M75,105 L75,115 M35,75 L45,75 M105,75 L115,75" stroke-width="1.5" stroke-linecap="round"></path>
+              <path d="M53,53 L58,58 M92,58 L97,53 M53,97 L58,92 M92,92 L97,97" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'precise'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'precise'}">Precise</h3>
+          </div>
+        </div>
+
+        <!-- Value 8 - Authentic (Updated) -->
+        <div class="value-column">
+          <div class="value-icon-container" (mouseenter)="setActiveValue('authentic')" (mouseleave)="setActiveValue('')">
+            <div class="brand-vision" *ngIf="activeValue === 'authentic'">
+              <div class="vision-text">
+                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+              </div>
+            </div>
+            <svg class="value-icon" [ngClass]="{'active': activeValue === 'authentic'}" width="150" height="150" viewBox="0 0 150 150">
+              <path d="M75,35 C55,35 40,50 40,75 C40,100 55,115 75,115 C95,115 110,100 110,75 C110,50 95,35 75,35 Z" stroke-width="2" fill="none"></path>
+              <path d="M60,75 L70,85 L90,65" stroke-width="2" stroke-linecap="round" fill="none"></path>
+              <path d="M55,55 C60,50 90,50 95,55" stroke-width="1.5" fill="none"></path>
+              <path d="M55,95 C60,100 90,100 95,95" stroke-width="1.5" fill="none"></path>
+              <path d="M50,75 C50,68 100,68 100,75 C100,82 50,82 50,75 Z" stroke-width="1" fill="none"></path>
+            </svg>
+          </div>
+          <div class="value-divider"></div>
+          <div class="value-selector-container">
+            <div class="value-selector" [ngClass]="{'active': activeValue === 'authentic'}"></div>
+            <h3 class="value-title" [ngClass]="{'active': activeValue === 'authentic'}">Authentic</h3>
+          </div>
+        </div>
       </div>
     </div>
   </div>

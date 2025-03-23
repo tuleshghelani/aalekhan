@@ -43,6 +43,12 @@ interface SolidCircle {
   floatY?: number;
 }
 
+interface BrandValue {
+  id: string;
+  title: string;
+  tagline: string;
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -171,6 +177,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   scrollPosition: number = 0;
   lastScrollTop: number = 0;
   scrollSpeed: number = 5; // Adjust this value to control scroll sensitivity
+
+  // Add this property after other class variables
+  activeValue: string = '';
+
+  brandValues: BrandValue[] = [
+    { id: 'bold', title: 'Bold', tagline: 'WE PROCEED WITH COURAGE' },
+    { id: 'brave', title: 'Brave', tagline: 'WE EMBRACE CHALLENGES' },
+    { id: 'strategic', title: 'Strategic', tagline: 'WE PLAN WITH VISION' },
+    { id: 'creative', title: 'Creative', tagline: 'WE THINK DIFFERENTLY' },
+    { id: 'innovative', title: 'Innovative', tagline: 'WE CREATE THE FUTURE' },
+    { id: 'collaborative', title: 'Collaborative', tagline: 'WE SUCCEED TOGETHER' },
+    { id: 'precise', title: 'Precise', tagline: 'WE FOCUS ON DETAILS' },
+    { id: 'authentic', title: 'Authentic', tagline: 'WE STAY TRUE' }
+  ];
 
   constructor(
     private meta: Meta,
@@ -1072,5 +1092,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         ctx.stroke();
       }
     }
+  }
+
+  // Add this method to your class
+  setActiveValue(value: string): void {
+    this.activeValue = value;
   }
 }

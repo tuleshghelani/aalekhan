@@ -162,7 +162,7 @@ $animationSpeed: 40s;
 
 .marquee {
     width: 100%;
-    height: 450px;
+    height: 550px;
     padding-top: 80px;
     background-color: #123751;
     overflow: hidden;
@@ -179,24 +179,321 @@ $animationSpeed: 40s;
     white-space: nowrap;
     transition: transform 0.1s ease-out; // Smooth movement
     
-    span {
-      display: inline-block;
-      font-size: 95px;
-      letter-spacing: 8px;
-      text-transform: uppercase;
+    .even-line {
+      background: linear-gradient(135deg, #FBEB39, #123751);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .even-highlight {
       background: linear-gradient(135deg, #123751, whitesmoke);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .odd-line {
+      background: linear-gradient(135deg, #123751, whitesmoke);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .odd-highlight {
+      background: linear-gradient(135deg, #FBEB39, #123751);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    span {
+      display: inline-block;
+      font-size: 110px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
       font-family: 'Georgia', serif;
       padding: 31px 20px 35px;
+    }
+}
+
+/* Brand Values Section */
+.brand-values-section {
+  background-color: $primary-color;
+  padding: 80px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.brand-values-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.brand-vision {
+  
+  .vision-text {
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: $secondary-color;
+      text-transform: uppercase;
+      text-shadow: 0 0 15px rgba($secondary-color, 0.6);
+      animation: textGlow 3s ease-in-out infinite;
       
-      .highlight {
-          background: linear-gradient(135deg, #FBEB39, #123751);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
+      @media (max-width: 767px) {
+        font-size: 36px;
       }
+      
+      @media (max-width: 480px) {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+.values-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  flex-wrap: wrap;
+  
+  @media (max-width: 991px) {
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+.value-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28%;
+  max-width: 350px;
+  
+  @media (max-width: 1199px) {
+    width: 45%;
+  }
+  
+  @media (max-width: 991px) {
+    width: 45%;
+  }
+  
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+.value-icon-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center !important;
+  margin-bottom: 15px;
+}
+
+.value-icon {
+  width: 200px;
+  height: 200px;
+  
+  path, circle, line {
+    stroke: rgba(255, 255, 255, 0.3);
+    fill: none;
+    transition: all 0.4s ease-out;
+  }
+  
+  &.active {
+    path, circle, line {
+      stroke: $secondary-color;
+      stroke-width: 3;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.value-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba($secondary-color, 0.3), transparent);
+  margin: 20px 0;
+}
+
+.value-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value-selector {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  
+  &.active {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    box-shadow: 0 0 15px rgba($secondary-color, 0.8);
+  }
+}
+
+.value-title {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  &.active {
+    color: $secondary-color;
+  }
+  
+  @media (max-width: 767px) {
+    font-size: 24px;
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba($secondary-color, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba($secondary-color, 0.9), 0 0 35px rgba($secondary-color, 0.5);
+  }
+}
+
+.brand-icons-wrapper {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+  
+  @media (max-width: 767px) {
+    gap: 20px;
+  }
+}
+
+.brand-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.brand-icon {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  
+  @media (max-width: 767px) {
+    width: 120px;
+    height: 120px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+  }
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    
+    path, circle, line {
+      stroke: rgba(255, 255, 255, 0.3);
+      fill: none;
+      transition: all 0.4s ease;
+    }
+    
+    circle {
+      fill: rgba(255, 255, 255, 0.3);
+    }
+  }
+  
+  &.active, &:hover {
+    transform: scale(1.1);
+    
+    svg {
+      path, circle, line {
+        stroke: $secondary-color;
+        stroke-width: 3;
+      }
+      
+      circle {
+        fill: $secondary-color;
+      }
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba($secondary-color, 0.3) 0%, rgba($secondary-color, 0) 70%);
+      z-index: -1;
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+  }
+}
+
+.selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  
+  .selector {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    
+    &.active {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+      box-shadow: 0 0 10px rgba($secondary-color, 0.6);
+    }
+  }
+  
+  h3 {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    transition: all 0.3s ease;
+    
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
   }
 }
 
