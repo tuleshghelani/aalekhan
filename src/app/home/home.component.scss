@@ -231,7 +231,9 @@ $animationSpeed: 40s;
 }
 
 .brand-vision {
-  
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
   .vision-text {
     h2 {
       font-size: 22px;
@@ -251,6 +253,11 @@ $animationSpeed: 40s;
       }
     }
   }
+}
+
+.value-icon-container:hover .brand-vision {
+  opacity: 1;
+  visibility: visible;
 }
 
 .values-row {
