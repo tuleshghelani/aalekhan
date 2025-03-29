@@ -192,6 +192,28 @@ export class HomeComponent implements OnInit, OnDestroy {
     { id: 'authentic', title: 'Authentic', tagline: 'WE STAY TRUE' }
   ];
 
+  clientLogos = [
+    { name: 'Client 1', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 2', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 3', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 4', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 5', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 6', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 7', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 8', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 1', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 2', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 3', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 4', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 5', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 6', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 7', src: '../assets/aalekhan logo icon black.png' },
+    { name: 'Client 8', src: '../assets/aalekhan logo icon black.png' },
+  ];
+
+  @ViewChild('logoTrack') logoTrack!: ElementRef;
+  private logoAnimationPaused = false;
+
   constructor(
     private meta: Meta,
     private title: Title,
@@ -264,6 +286,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.updateDimensions();
     window.addEventListener('resize', () => this.updateDimensions());
+
+    this.initializeLogoSlider();
   }
 
   updateDimensions() {
@@ -413,13 +437,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   private setMetaData() {
     if (this.transferState.hasKey(META_KEY)) return;
 
-    this.title.setTitle('Aalekhan - Premium Branding & Creative Design Agency & Software Development');
+    this.title.setTitle('Aalekhan - Premium Branding & Creative Design Agency | 120+ Brands Launched');
     
     const metaTags = [
-      { name: 'description', content: 'Leading branding and creative design agency specializing in brand strategy, graphic design, web development, and digital advertising. Transform your brand with our innovative solutions.' },
-      { name: 'keywords', content: 'branding agency, creative design, brand strategy, graphic design, web development, digital advertising, logo design, UI/UX design, brand identity, marketing solutions' },
-      { property: 'og:title', content: 'Aalekhan - Premium Branding & Creative Design Agency' },
-      { property: 'og:description', content: 'Transform your brand with our innovative design solutions and strategic branding services.' },
+      { name: 'description', content: 'Aalekhan is an obsessive branding and design studio that transforms visions into distinctive brand identities. With 120+ brands launched, ₹100M+ revenue moved, and 20+ awards won, we craft impactful designs that resonate with audiences and drive business growth.' },
+      { name: 'keywords', content: 'premium branding agency, creative design, brand strategy, graphic design, web development, digital advertising, logo design, UI/UX design, brand identity, award-winning design' },
+      { property: 'og:title', content: 'Aalekhan - Premium Branding & Creative Design Agency | 120+ Brands Launched' },
+      { property: 'og:description', content: 'We\'re obsessed with crafting distinctive brands, and we\'re pretty great at it too! With 120+ brands launched and 20+ awards won, we transform visions into impactful brand experiences.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: `${this.baseUrl}/assets/logo/aalekhan-logo.png` },
       { name: 'twitter:card', content: 'summary_large_image' },
@@ -1097,5 +1121,25 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Add this method to your class
   setActiveValue(value: string): void {
     this.activeValue = value;
+  }
+
+  private initializeLogoSlider() {
+    if (!this.logoTrack) return;
+    
+    const trackElement = this.logoTrack.nativeElement;
+    trackElement.addEventListener('mouseenter', () => {
+      this.logoAnimationPaused = true;
+      trackElement.style.animationPlayState = 'paused';
+    });
+    
+    trackElement.addEventListener('mouseleave', () => {
+      this.logoAnimationPaused = false;
+      trackElement.style.animationPlayState = 'running';
+    });
+    
+    // Duplicate logos to ensure continuous scrolling
+    const logoSlides = trackElement.querySelectorAll('.logo-slide');
+    const clonedLogos = Array.from(logoSlides).map((logo: any) => logo.cloneNode(true));
+    clonedLogos.forEach((logo: Node) => trackElement.appendChild(logo));
   }
 }

@@ -75,6 +75,53 @@
          class="bubble"><span *ngIf="selectedBubble === bubble.id">{{bubble.content}}</span>
     </div>
   </div> 
+  
+  <!-- STATS SHOWCASE SECTION -->
+  <div class="stats-showcase-section">
+    <div class="stats-container">
+      <div class="stats-header">
+        <h1>Beyond just <span class="stylized">Design</span></h1>
+        <p class="stats-tagline">We transform visions into impactful brand experiences that resonate, inspire, and drive growth.</p>
+      </div>
+      
+      <div class="stats-metrics">
+        <div class="metric-circle">
+          <div class="metric-content">
+            <span class="metric-number">500<span class="plus">+</span></span>
+            <span class="metric-label">PROJECTS DELIVERED</span>
+          </div>
+        </div>
+        
+        <div class="metric-circle highlight">
+          <div class="metric-content">
+            <span class="metric-number">100<span class="plus">+</span></span>
+            <span class="metric-label">HAPPY CLIENTS</span>
+          </div>
+        </div>
+        
+        <div class="metric-circle">
+          <div class="metric-content">
+            <span class="metric-number">7<span class="plus">+</span></span>
+            <span class="metric-label">YEARS EXPERIENCE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO SLIDER SECTION -->
+  <div class="logo-slider-section">
+    <div class="diagonal-slider-container">
+      <div class="yellow-border top-border"></div>
+      <div class="logo-track" #logoTrack>
+        <div class="logo-slide" *ngFor="let logo of clientLogos">
+          <img [src]="logo.src" [alt]="logo.name">
+        </div>
+      </div>
+      <div class="yellow-border bottom-border"></div>
+    </div>
+  </div>
+
 
   <div class="heading-text row text-center d-block">
     <h1 class="pt-5">How we can help</h1>
@@ -387,7 +434,6 @@
       </div>
     </div>
   </div>
-  
   <!-- Footer  -->
   <div class="footer-section">
     <div class="row">
