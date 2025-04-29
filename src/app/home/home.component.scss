@@ -233,7 +233,9 @@ $animationSpeed: 40s;
 .brand-vision {
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none; /* prevent interaction when hidden */
+  position: absolute; /* if needed to position over content */
   .vision-text {
     h2 {
       font-size: 22px;
@@ -245,19 +247,28 @@ $animationSpeed: 40s;
       animation: textGlow 3s ease-in-out infinite;
       
       @media (max-width: 767px) {
-        font-size: 36px;
+        font-size: 17px;
       }
       
       @media (max-width: 480px) {
-        font-size: 32px;
+        font-size: 12px;
       }
     }
   }
 }
 
-.value-icon-container:hover .brand-vision {
+.brand-vision.show {
   opacity: 1;
   visibility: visible;
+  transform: translateX(-145px);
+  pointer-events: auto;
+  @media (max-width: 767px) {
+    transform: translateX(-100px);
+  }
+  
+  @media (max-width: 480px) {
+    transform: translateX(-85px);
+  }
 }
 
 .values-row {
