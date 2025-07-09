@@ -75,6 +75,53 @@
          class="bubble"><span *ngIf="selectedBubble === bubble.id">{{bubble.content}}</span>
     </div>
   </div> 
+  
+  <!-- STATS SHOWCASE SECTION -->
+  <div class="stats-showcase-section">
+    <div class="stats-container">
+      <div class="stats-header">
+        <h1>Beyond just <span class="stylized">Design</span></h1>
+        <p class="stats-tagline">We transform visions into impactful brand experiences that resonate, inspire, and drive growth.</p>
+      </div>
+      
+      <div class="stats-metrics">
+        <div class="metric-circle">
+          <div class="metric-content">
+            <span class="metric-number">500<span class="plus">+</span></span>
+            <span class="metric-label">PROJECTS DELIVERED</span>
+          </div>
+        </div>
+        
+        <div class="metric-circle highlight">
+          <div class="metric-content">
+            <span class="metric-number">100<span class="plus">+</span></span>
+            <span class="metric-label">HAPPY CLIENTS</span>
+          </div>
+        </div>
+        
+        <div class="metric-circle">
+          <div class="metric-content">
+            <span class="metric-number">2<span class="plus">+</span></span>
+            <span class="metric-label">YEARS EXPERIENCE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO SLIDER SECTION -->
+  <div class="logo-slider-section">
+    <div class="diagonal-slider-container">
+      <div class="yellow-border top-border"></div>
+      <div class="logo-track" #logoTrack>
+        <div class="logo-slide" *ngFor="let logo of clientLogos">
+          <img [src]="logo.src" [alt]="logo.name">
+        </div>
+      </div>
+      <div class="yellow-border bottom-border"></div>
+    </div>
+  </div>
+
 
   <div class="heading-text row text-center d-block">
     <h1 class="pt-5">How we can help</h1>
@@ -193,9 +240,9 @@
         <!-- Value 1 - Bold (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('bold')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'bold' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'bold'}" width="150" height="150" viewBox="0 0 150 150">
@@ -215,9 +262,9 @@
         <!-- Value 2 - Brave (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('brave')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'brave' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'brave'}" width="150" height="150" viewBox="0 0 150 150">
@@ -238,9 +285,9 @@
         <!-- Value 3 - Strategic (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('strategic')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'strategic' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'strategic'}" width="150" height="150" viewBox="0 0 150 150">
@@ -264,9 +311,9 @@
         <!-- Value 4 - Creative (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('creative')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'creative' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'creative'}" width="150" height="150" viewBox="0 0 150 150">
@@ -288,9 +335,9 @@
         <!-- Value 5 - Innovative (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('innovative')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'innovative' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'innovative'}" width="150" height="150" viewBox="0 0 150 150">
@@ -314,9 +361,9 @@
         <!-- Value 6 - Collaborative (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('collaborative')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'collaborative' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'collaborative'}" width="150" height="150" viewBox="0 0 150 150">
@@ -340,9 +387,9 @@
         <!-- Value 7 - Precise (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('precise')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'precise' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'precise'}" width="150" height="150" viewBox="0 0 150 150">
@@ -365,9 +412,9 @@
         <!-- Value 8 - Authentic (Updated) -->
         <div class="value-column">
           <div class="value-icon-container" (mouseenter)="setActiveValue('authentic')" (mouseleave)="setActiveValue('')">
-            <div class="brand-vision">
+            <div class="brand-vision" [ngClass]="{'show': activeValue === 'authentic' }">
               <div class="vision-text">
-                <h2>WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
+                <h2 class="mb-0">WE'RE THE <br>ARCHITECTS<br>OF VISION</h2>
               </div>
             </div>
             <svg class="value-icon" [ngClass]="{'active': activeValue === 'authentic'}" width="150" height="150" viewBox="0 0 150 150">
@@ -387,7 +434,6 @@
       </div>
     </div>
   </div>
-  
   <!-- Footer  -->
   <div class="footer-section">
     <div class="row">
