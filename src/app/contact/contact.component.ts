@@ -1,27 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { HeadersComponent } from '../headers/headers.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { FileServiceService } from '../file-service.service';
 
 @Component({
   selector: 'app-contact',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HeadersComponent,
+    MatFormFieldModule,
+    MatInputModule
+  ],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
   formData: FormGroup;
 
-  constructor(private fb: FormBuilder, private fileService: FileServiceService) {
-    this.formData = this.fb.group({
-      firstName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      description: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
-      // Add more form fields as needed
+  constructor(private fileService: FileServiceService) {
+    this.formData = new FormGroup({
+      name: new FormControl(''),
+      email: new FormControl(''),
+      message: new FormControl('')
     });
   }
 
-  ngOnInit(): void {
-  }
   onSubmit(): void {
     if (this.formData.valid) {
       const formValues = this.formData.getRawValue();

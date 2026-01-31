@@ -1,0 +1,33 @@
+// Service-specific Background Colors
+.bg-design { background-color: var(--accent-creative); }
+.bg-tech { background-color: var(--accent-tech); }
+.bg-media { background-color: var(--accent-media); }
+.bg-print { background-color: var(--accent-print); }
+
+// Service-specific Text Colors
+.text-design { color: var(--accent-creative); }
+.text-tech { color: var(--accent-tech); }
+.text-media { color: var(--accent-media); }
+.text-print { color: var(--accent-print); }
+
+// Service-specific Gradients
+.gradient-creative {
+  background: linear-gradient(135deg, var(--accent-creative), var(--secondary));
+}
+
+.gradient-tech {
+  background: linear-gradient(135deg, var(--accent-tech), var(--primary));
+}
+
+.gradient-media {
+  background: linear-gradient(135deg, var(--accent-media), var(--secondary));
+}
+
+// Professional Overlays
+.overlay-dark {
+  background: rgba(18, 55, 81, 0.8); // Using primary color
+}
+
+.overlay-light {
+  background: rgba(251, 235, 57, 0.1); // Using secondary color
+} 

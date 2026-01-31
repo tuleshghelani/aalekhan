@@ -1,5 +1,129 @@
-/* You can add global styles to this file, and also import other style files */
-// @font-face {
-//     font-family: "My Custom Font";
-//     src: url(http://www.example.org/mycustomfont.ttf) format("truetype");
-// }
+@import './styles/_utilities.scss';
+// Color Palette
+:root {
+  // Primary Colors (Professional Navy)
+  --primary: #123751;
+  --primary-light: #1e5d87;
+  --primary-lighter: #2a83bd;
+  --primary-lightest: #e8f1f5;
+
+  // Secondary Colors (Creative Yellow)
+  --secondary: #FBEB39;
+  --secondary-light: #fcef61;
+  --secondary-lighter: #fdf289;
+  --secondary-lightest: #fffbe6;
+
+  // Creative Accent Colors
+  --accent-creative: #FF4B6E;  // Design & Branding
+  --accent-tech: #00C2FF;      // Web/Software
+  --accent-media: #9747FF;     // Advertising
+  --accent-print: #00D5B0;     // Print & Graphics
+
+  // Industry-specific Colors
+  --design: #FF4B6E;
+  --advertising: #9747FF;
+  --development: #00C2FF;
+  --branding: #FBEB39;
+  --graphics: #00D5B0;
+
+  // Neutral Colors
+  --neutral-100: #FFFFFF;
+  --neutral-200: #F8F9FA;
+  --neutral-300: #E9ECEF;
+  --neutral-400: #DEE2E6;
+  --neutral-500: #ADB5BD;
+  --neutral-600: #6C757D;
+  --neutral-700: #495057;
+  --neutral-800: #343A40;
+  --neutral-900: #212529;
+
+  // Success/Error States
+  --success: #28A745;
+  --error: #DC3545;
+  --warning: #FFC107;
+  --info: #17A2B8;
+
+  // Font Family Variables
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Georgia', serif;
+  --font-accent: 'Nunito', sans-serif;
+
+  // Font Weights
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  // Font Sizes
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --primary-rgb: 18, 55, 81;
+  --secondary-rgb: 251, 235, 57;
+  --accent-rgb: 41, 128, 185;
+}
+
+// SCSS Variables
+$primary: var(--primary);
+$primary-light: var(--primary-light);
+$primary-lighter: var(--primary-lighter);
+$primary-lightest: var(--primary-lightest);
+
+$secondary: var(--secondary);
+$secondary-light: var(--secondary-light);
+$secondary-lighter: var(--secondary-lighter);
+$secondary-lightest: var(--secondary-lightest);
+
+$accent: var(--accent);
+$accent-light: var(--accent-light);
+$accent-lighter: var(--accent-lighter);
+$accent-lightest: var(--accent-lightest);
+
+// Utility Classes
+.bg-primary { background-color: $primary; }
+.bg-primary-light { background-color: $primary-light; }
+.bg-primary-lighter { background-color: $primary-lighter; }
+.bg-primary-lightest { background-color: $primary-lightest; }
+
+.bg-secondary { background-color: $secondary; }
+.bg-secondary-light { background-color: $secondary-light; }
+.bg-secondary-lighter { background-color: $secondary-lighter; }
+.bg-secondary-lightest { background-color: $secondary-lightest; }
+
+.bg-accent { background-color: $accent; }
+.bg-accent-light { background-color: $accent-light; }
+.bg-accent-lighter { background-color: $accent-lighter; }
+.bg-accent-lightest { background-color: $accent-lightest; }
+
+.text-primary { color: $primary; }
+.text-secondary { color: $secondary; }
+.text-accent { color: $accent; }
+
+// Typography Classes
+.font-primary { font-family: var(--font-primary); }
+.font-secondary { font-family: var(--font-secondary); }
+.font-accent { font-family: var(--font-accent); }
+
+.font-regular { font-weight: var(--font-regular); }
+.font-medium { font-weight: var(--font-medium); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }
+
+// Base Typography
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--primary);
+}
+
+h1 {
+  font-family: var(--font-secondary);
+}

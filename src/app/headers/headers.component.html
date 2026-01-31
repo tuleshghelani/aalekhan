@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-area pt-lg-3">
-    <!-- <img class="brand-logo" src="../assets/alekhan_icon_white.png"  (click)="navigateToHome()"/> -->
-    <img class="brand-logo" [src]="isHomePage ? '../assets/aalekhan logo icon black.png' : '../assets/aalekhan logo icon white.png'" (click)="navigateToHome()" />
+    <img class="brand-logo" src="../assets/alekhan_icon_white.png"  (click)="navigateToHome()"/>
+    <!-- <img class="brand-logo" [src]="isHomePage ? '../assets/aalekhan logo icon black.png' : '../assets/aalekhan logo icon white.png'" (click)="navigateToHome()" /> -->
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +17,6 @@
       </div>
     </div>
     <div class="about-popup float-right mr-4 mr-xxl-5 mr-xl-5 mr-lg-5 d-flex" [ngClass]="{'service-nav': activePage}" (click)="openAboutUs()" style="cursor: pointer;color: black;">
-      <h1 style="font-weight: 500;" class="mr-2" >Menu</h1>
-      <i class="fa-solid fa-bars"></i></div>
+      <h1 style="font-weight: 500;" class="mr-2" routerLink="/about-dialog">Menu</h1>
+      <i class="fa-solid fa-bars" routerLink="/about-dialog"></i></div>
   </nav>

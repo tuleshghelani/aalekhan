@@ -1,9 +1,12 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { CommonModule } from '@angular/common';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { Project } from '../services/project.service';
 
 @Component({
   selector: 'app-project-details-popup',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule],
   templateUrl: './project-details-popup.component.html',
   styleUrls: ['./project-details-popup.component.scss']
 })

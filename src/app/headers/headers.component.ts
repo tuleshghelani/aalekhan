@@ -1,40 +1,40 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-headers',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './headers.component.html',
   styleUrls: ['./headers.component.scss']
 })
 export class HeadersComponent implements OnInit {
   @Input() screenWidth: any;
-  @Input() activePage!: string
+  @Input() activePage!: string;
   @Output() actionEvent = new EventEmitter<any>();
   
   isHomePage: boolean = false;
+  
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.checkIfHomePage();
   }
 
-  contactDialog() { }
-  checkIfHomePage() {
-    // Get the current route
-    const currentRoute = this.router.url;
+  contactDialog() {
+    this.actionEvent.emit('contact');
+  }
 
-    // Check if the current route is the root ("/") route
-    this.isHomePage = currentRoute === '/';
+  checkIfHomePage() {
+    this.isHomePage = this.router.url === '/';
   }
 
   openAboutUs() {
-    this.router.navigate(['/about-dialog'])
-    // this.actionEvent.emit(true)
-    // this.commonService.menuActionCall(true)
+    this.actionEvent.emit('about');
   }
   
   navigateToHome() {
-    this.router.navigate(['/']); // Replace 'home' with your actual home route path
+    this.router.navigate(['/']);
   }
-
 }

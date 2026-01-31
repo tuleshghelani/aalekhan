@@ -1,19 +1,28 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HeadersComponent } from '../headers/headers.component';
+import { RouterModule } from '@angular/router';
 import VanillaTilt from 'vanilla-tilt';
 import { ProjectService, Project } from '../services/project.service';
 import { ProjectDetailsPopupComponent } from '../project-details-popup/project-details-popup.component';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-all-projects',
+  standalone: true,
+  imports: [CommonModule, HeadersComponent, RouterModule],
   templateUrl: './all-projects.component.html',
   styleUrls: ['./all-projects.component.scss']
 })
 export class AllProjectsComponent implements OnInit, AfterViewInit {
   projects: Project[] = [];
 
-  constructor(private projectService: ProjectService,
-    private dialog: MatDialog) { }
+  constructor(
+    private projectService: ProjectService, 
+    private router: Router,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.projects = this.projectService.getProjects();

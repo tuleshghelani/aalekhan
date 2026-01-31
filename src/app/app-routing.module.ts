@@ -11,14 +11,13 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 import { AllProjectsComponent } from './all-projects/all-projects.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactComponent },
   { path: 'service', component: ServiceComponent },
   // { path: 'team', component: TeamComponent },
   { path: 'about-dialog', component: AboutDialogComponent },
-  // { path: 'projects', component: ProjectComponent },
   { path: 'projects', component: AllProjectsComponent },
   { path: 'projects/details', component: ProjectDetailsComponent },
   { path: '**', component: HomeComponent },
