@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -11,48 +11,134 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   templateUrl: './about-dialog.component.html',
   styleUrls: ['./about-dialog.component.scss']
 })
-export class AboutDialogComponent implements OnInit {
+export class AboutDialogComponent implements OnInit, OnDestroy {
+  screenWidth: any;
+  private touchStartTime: number = 0;
+  private touchStartX: number = 0;
+  private touchStartY: number = 0;
+  private readonly TOUCH_DELAY = 300; // Maximum time for a tap (ms)
+  private readonly TOUCH_MOVE_THRESHOLD = 10; // Maximum movement for a tap (px)
 
-  constructor(private router:Router, private routeLocation:Location, private dialog: MatDialog) { }
-  screenWidth: any
-  @HostListener('window:resize', ['$event'])
-  onResize() {
+  constructor(private router: Router, private routeLocation: Location, private dialog: MatDialog) { }
+
+  @HostListener('window:resize')
+  onResize(): void {
     this.screenWidth = window.innerWidth;
   }
 
-  ngOnInit(): void {
-  }
-
-  closeAboutDialog() {
-    this.routeLocation.back();
-  }
-
-  gotHomePage(){
-    this.router.navigate(['/'])
-  }
-
-  openSocialAccount(event: MouseEvent, account: string) {
-    event.preventDefault();
-
-    switch (account) {
-      case 'linked-in':
-        window.open('https://www.linkedin.com/in/aalekhan-branding-a7b5b8282', '_blank');
-        break;
-      case 'instagram':
-        window.open('https://www.instagram.com/aalekhan_branding', '_blank');
-        break;
-      case 'pinterest':
-        window.open('https://in.pinterest.com/aalekhan_branding/', '_blank');
-        break;
-      case 'behance':
-        window.open('https://www.behance.net/aalekhanbrandin', '_blank');
-        break;
+  @HostListener('window:keydown.escape', ['$event'])
+  onEscapeKey(event: Event): void {
+    if (event instanceof KeyboardEvent) {
+      this.closeAboutDialog();
     }
   }
 
-  openAllProjects(url: string) {
-    this.router.navigate([url]);
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+    // Prevent body scroll when dialog is open
+    document.body.style.overflow = 'hidden';
   }
 
+  ngOnDestroy(): void {
+    // Restore body scroll when dialog is closed
+    document.body.style.overflow = '';
+  }
 
+  closeAboutDialog(): void {
+    this.routeLocation.back();
+  }
+
+  gotHomePage(): void {
+    this.navigateToPage('/');
+  }
+
+  navigateToPage(url: string, event?: Event): void {
+    // Prevent default form submission behavior
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
+    // Close dialog and navigate
+    this.router.navigate([url]).then(() => {
+      // Small delay to ensure smooth transition
+      setTimeout(() => {
+        this.closeAboutDialog();
+      }, 100);
+    });
+  }
+
+  handleTouchStart(event: TouchEvent): void {
+    if (event.touches && event.touches.length > 0) {
+      this.touchStartTime = Date.now();
+      this.touchStartX = event.touches[0].clientX;
+      this.touchStartY = event.touches[0].clientY;
+    }
+  }
+
+  handleTouchEnd(event: TouchEvent): void {
+    if (!event.changedTouches || event.changedTouches.length === 0) {
+      return;
+    }
+
+    const touchEndTime = Date.now();
+    const touchDuration = touchEndTime - this.touchStartTime;
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+    const touchMoveX = Math.abs(touchEndX - this.touchStartX);
+    const touchMoveY = Math.abs(touchEndY - this.touchStartY);
+
+    // Check if it's a tap (not a swipe or long press)
+    if (touchDuration < this.TOUCH_DELAY && 
+        touchMoveX < this.TOUCH_MOVE_THRESHOLD && 
+        touchMoveY < this.TOUCH_MOVE_THRESHOLD) {
+      // Prevent default to avoid double-tap zoom on iOS
+      event.preventDefault();
+      
+      // Get the target element and trigger click
+      const target = event.target as HTMLElement;
+      const linkElement = target.closest('a');
+      
+      if (linkElement) {
+        // Trigger navigation if it's a navigation link
+        const clickEvent = new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        });
+        linkElement.dispatchEvent(clickEvent);
+      }
+    }
+  }
+
+  openSocialAccount(event: MouseEvent | TouchEvent, account: string): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    let url = '';
+    switch (account) {
+      case 'linked-in':
+        url = 'https://www.linkedin.com/in/aalekhan-branding-a7b5b8282';
+        break;
+      case 'instagram':
+        url = 'https://www.instagram.com/aalekhan_branding';
+        break;
+      case 'pinterest':
+        url = 'https://in.pinterest.com/aalekhan_branding/';
+        break;
+      case 'behance':
+        url = 'https://www.behance.net/aalekhanbrandin';
+        break;
+      default:
+        return;
+    }
+
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  openAllProjects(url: string): void {
+    this.navigateToPage(url);
+  }
 }

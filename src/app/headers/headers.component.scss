@@ -1,20 +1,133 @@
 @import url(../home/home.component.scss);
+
+.navbar-area {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 15px 20px !important;
+    position: relative;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+}
+
+.brand-logo {
+    height: auto;
+    max-width: 120px;
+    transition: opacity 0.3s ease;
+    flex-shrink: 0;
+    cursor: pointer;
+    order: 1;
+    
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
 .fa-bars {
     font-size: 30px;
+    transition: transform 0.3s ease;
 }
 
 .service-nav {
     color: rgb(254, 241, 0, 0.8) !important; 
 }
 
-.nav-link {
-    color: rgb(254, 241, 0, 0.8)
-}
 .about-popup {
- h1, i {
-    color: rgb(254, 241, 0, 0.8)
- }   
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    cursor: pointer !important;
+    gap: 10px;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 12px;
+    margin-left: auto !important;
+    margin-right: 20px !important;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    position: relative;
+    z-index: 10;
+    -webkit-tap-highlight-color: rgba(251, 235, 57, 0.3);
+    touch-action: manipulation;
+    user-select: none;
+    order: 2;
+    flex-shrink: 0;
+    
+    &:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+    
+    &:active {
+        transform: scale(0.95);
+    }
+    
+    &:focus {
+        outline: 2px solid rgb(254, 241, 0, 0.8);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    
+    .menu-text {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: rgb(254, 241, 0, 0.8);
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    
+    i {
+        color: rgb(254, 241, 0, 0.8);
+        pointer-events: none;
+        flex-shrink: 0;
+    }
 }
-// .navbar-area {
-//     background-color: #123751;
-// }
+
+// Responsive styles
+@media (max-width: 767.98px) {
+    .navbar-area {
+        padding: 0 15px;
+    }
+    
+    .brand-logo {
+        max-width: 100px;
+    }
+    
+    .about-popup {
+        padding: 6px 10px;
+        margin-right: 15px;
+        
+        .menu-text {
+            font-size: 1rem;
+        }
+        
+        .fa-bars {
+            font-size: 24px;
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .navbar-area {
+        padding: 0 10px;
+    }
+    
+    .brand-logo {
+        max-width: 80px;
+    }
+    
+    .about-popup {
+        padding: 6px 8px;
+        margin-right: 10px;
+        gap: 8px;
+        
+        .menu-text {
+            font-size: 0.9rem;
+        }
+        
+        .fa-bars {
+            font-size: 20px;
+        }
+    }
+}

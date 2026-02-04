@@ -1,144 +1,679 @@
-// @import url(../home/home.component.scss);
+// Mobile-first responsive design for About Dialog
 .about-dialog {
     position: fixed;
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 222;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: #123751;
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
 
+    // Screen reader only class
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    // Header section
+    .about-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+        height: auto;
+        min-height: 80px;
+        padding: 10px 0;
+
+        .about-brand-logo {
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            min-width: 44px;
+            min-height: 44px;
+            object-fit: contain;
+
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+
+        .about-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            padding: 8px 12px;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease, transform 0.2s ease;
+            line-height: 1;
+
+            &:hover {
+                color: #FBEB39;
+                transform: rotate(90deg);
+            }
+
+            &:active {
+                transform: rotate(90deg) scale(0.9);
+            }
+
+            &:focus {
+                outline: 2px solid #FBEB39;
+                outline-offset: 2px;
+            }
+        }
+    }
+
+    // Main content area
+    .about-main-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .main-navigation,
+        .projects-section {
+            .navigation-heading,
+            .section-heading {
+                font-size: 24px;
+                font-weight: 600;
+                color: #FBEB39;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+    // Navigation lists
     .about-list {
         list-style-type: none;
+        padding: 0;
+        margin: 0;
 
         li {
-            font-size: 95px;
-            font-weight: 800;
-            margin-bottom: 95px;
-            color: whitesmoke;
-            cursor: pointer;
-            transition: 0.5s;
-        }
-
-        li:hover {
-            letter-spacing: 5px;
-            color: #FBEB39;
-        }
-    }
-
-    .about-brand-logo {
-        position: absolute;
-        width: 100px;
-        height: auto;
-        top: 20px;
-        left: 50px;
-    }
-
-    .Degree-brand-logo {
-        position: absolute;
-        width: 85px;
-        height: auto;
-        top: -62px;
-    }
-
-    .about-close {
-        margin: 30px;
-        font-size: 44px;
-        color: white;
-    }
-
-    .about-header {
-        margin: 20px 20px 60px 20px;
-        height: 100px;
-    }
-
-    .team-image {
-        margin-top: 20px;
-        width: 520px;
-        height: 360px;
-        transition: filter 0.3s ease-in-out;
-    }
-
-    .team-image:hover {
-        filter: grayscale(100%);
-    }
-
-    .contact-text {
-        p {
-            color: whitesmoke;
-            font-size: 24px;
-            padding-bottom: 55px;
-        }
-
-        h1 {
-            font-size: 105px;
-            font-weight: 800;
-            color: whitesmoke;
-            cursor: pointer;
-            transition: 0.5s;
-        }
-
-        h1:hover {
-            letter-spacing: 5px;
-            color: #FBEB39;
-        }
-    }
-
-    .contact-details {
-        list-style-type: none;
-
-        li {
-            font-size: 24px;
-            color: white;
             margin-bottom: 30px;
+
+            a {
+                display: block;
+                font-size: 48px;
+                font-weight: 800;
+                color: whitesmoke;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                padding: 10px 0;
+                min-height: 44px;
+                min-width: 44px;
+                -webkit-tap-highlight-color: rgba(251, 235, 57, 0.3);
+                touch-action: manipulation;
+
+                strong {
+                    display: block;
+                }
+
+                &:hover,
+                &:focus {
+                    letter-spacing: 5px;
+                    color: #FBEB39;
+                    outline: none;
+                }
+
+                &:active {
+                    transform: scale(0.98);
+                }
+            }
+        }
+    }
+
+    // Team image section
+    .team-image-section {
+        width: 100%;
+        margin: 20px 0;
+
+        .team-image {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            transition: filter 0.3s ease-in-out;
+            border-radius: 8px;
+            object-fit: cover;
         }
 
-        .social-handle {
-            span {
+        .team-image:hover {
+            filter: grayscale(100%);
+        }
+    }
+
+    // Footer section
+    .about-footer {
+        padding: 40px 20px;
+        margin-top: 40px;
+
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-text-wrapper,
+        .contact-text {
+            .contact-heading {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FBEB39;
+                margin-bottom: 15px;
+            }
+
+            .contact-subheading {
+                color: whitesmoke;
                 font-size: 18px;
-                margin-right: 10px;
+                margin-bottom: 20px;
+                line-height: 1.6;
+            }
+
+            .contact-link {
+                display: inline-block;
+                text-decoration: none;
+                -webkit-tap-highlight-color: rgba(251, 235, 57, 0.3);
+                touch-action: manipulation;
+
+                .contact-title {
+                    font-size: 72px;
+                    font-weight: 800;
+                    color: whitesmoke;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    margin: 0;
+                    min-height: 44px;
+                    min-width: 44px;
+                    display: inline-block;
+
+                    &:hover,
+                    &:focus {
+                        letter-spacing: 5px;
+                        color: #FBEB39;
+                        outline: none;
+                    }
+
+                    &:active {
+                        transform: scale(0.98);
+                    }
+                }
+            }
+        }
+
+        .contact-details-wrapper {
+            width: 100%;
+        }
+
+        .contact-details {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                font-size: 18px;
+                color: white;
+                margin-bottom: 20px;
+                line-height: 1.6;
+
+                strong {
+                    color: #FBEB39;
+                    font-weight: 600;
+                    display: block;
+                    margin-bottom: 8px;
+                }
+
+                p {
+                    margin: 5px 0;
+                    color: whitesmoke;
+                }
+
+                a {
+                    color: whitesmoke;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                    min-height: 44px;
+                    display: inline-block;
+                    padding: 4px 0;
+                    -webkit-tap-highlight-color: rgba(251, 235, 57, 0.3);
+                    touch-action: manipulation;
+
+                    &:hover,
+                    &:focus {
+                        color: #FBEB39;
+                        outline: none;
+                    }
+                }
+
+                .social-heading {
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #FBEB39;
+                    margin-bottom: 15px;
+                    margin-top: 10px;
+                }
+
+                .social-links {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 15px;
+
+                    li {
+                        margin: 0;
+                    }
+
+                    .about-social {
+                        font-size: 16px;
+                        color: whitesmoke;
+                        cursor: pointer;
+                        padding: 10px 15px;
+                        min-height: 44px;
+                        min-width: 44px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.3s ease;
+                        text-decoration: none;
+                        border: 1px solid transparent;
+                        border-radius: 4px;
+                        -webkit-tap-highlight-color: rgba(251, 235, 57, 0.3);
+                        touch-action: manipulation;
+
+                        &:hover,
+                        &:focus {
+                            color: #FBEB39;
+                            border-color: #FBEB39;
+                            background-color: rgba(251, 235, 57, 0.1);
+                            outline: none;
+                        }
+
+                        &:active {
+                            transform: scale(0.95);
+                            background-color: rgba(251, 235, 57, 0.2);
+                        }
+                    }
+                }
             }
         }
     }
 }
 
-@media (max-width: 575.98px) {
+// Tablet styles (768px and up)
+@media (min-width: 768px) {
     .about-dialog {
-        overflow-y: scroll;
-        height: 100%;
-        background-color: #123751;
-
-        .about-close {
-            margin: 10px;
-        }
-
         .about-header {
-            margin: 20px 20px 60px 20px;
-            height: 100px;
-        }
+            margin: 30px 40px;
+            min-height: 100px;
 
-        .contact-text {
-            p {
-                color: whitesmoke;
-                font-size: 24px;
-                padding-bottom: 55px;
+            .about-brand-logo {
+                width: 100px;
             }
 
-            h1 {
-                font-size: 75px;
+            .about-close {
+                font-size: 44px;
+            }
+        }
+
+        .about-main-content {
+            padding: 40px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 60px;
+
+            .main-navigation,
+            .projects-section {
+                flex: 0 0 calc(33.333% - 40px);
+                min-width: 250px;
+
+                .navigation-heading,
+                .section-heading {
+                    font-size: 28px;
+                }
+            }
+
+            .team-image-section {
+                flex: 0 0 calc(33.333% - 40px);
+                min-width: 250px;
             }
         }
 
         .about-list {
             li {
-                font-size: 65px;
-                margin-bottom: 65px;
+                margin-bottom: 40px;
+
+                a {
+                    font-size: 65px;
+                }
+            }
+        }
+
+        .about-footer {
+            padding: 60px 40px;
+
+        .contact-section {
+            flex-direction: row;
+            gap: 60px;
+        }
+
+        .contact-text-wrapper,
+        .contact-text {
+            flex: 0 0 50%;
+
+            .contact-heading {
+                font-size: 32px;
+            }
+
+            .contact-subheading {
+                font-size: 20px;
+            }
+
+            .contact-link .contact-title {
+                font-size: 85px;
+            }
+        }
+
+        .contact-details-wrapper {
+            flex: 0 0 50%;
+        }
+
+        .contact-details {
+            li {
+                font-size: 20px;
+            }
+        }
+        }
+    }
+}
+
+// Desktop styles (1024px and up)
+@media (min-width: 1024px) {
+    .about-dialog {
+        .about-main-content {
+            padding: 60px 80px;
+
+            .main-navigation,
+            .projects-section {
+                flex: 0 0 calc(25% - 60px);
+
+                .navigation-heading,
+                .section-heading {
+                    font-size: 32px;
+                }
+            }
+
+            .team-image-section {
+                flex: 0 0 calc(25% - 60px);
+            }
+        }
+
+        .about-list {
+            li {
+                margin-bottom: 60px;
+
+                a {
+                    font-size: 85px;
+                }
+            }
+        }
+
+        .about-footer {
+            padding: 80px 80px;
+
+            .contact-text {
+                .contact-link .contact-title {
+                    font-size: 105px;
+                }
             }
         }
     }
-    .contact-details {
-        padding-left: 0px !important;
+}
+
+// Large desktop styles (1200px and up)
+@media (min-width: 1200px) {
+    .about-dialog {
+        .about-main-content {
+            padding: 80px 100px;
+            gap: 80px;
+        }
+
+        .about-list {
+            li {
+                margin-bottom: 95px;
+
+                a {
+                    font-size: 95px;
+                }
+            }
+        }
+    }
+}
+
+// Mobile-specific optimizations (max-width: 767.98px)
+@media (max-width: 767.98px) {
+    .about-dialog {
+        .about-header {
+            margin: 15px;
+            padding: 8px 0;
+            min-height: 60px;
+
+            .about-brand-logo {
+                width: 70px;
+            }
+
+            .about-close {
+                font-size: 32px;
+                padding: 6px 10px;
+            }
+        }
+
+        .about-main-content {
+            padding: 20px 15px;
+            gap: 30px;
+
+            .main-navigation,
+            .projects-section {
+                .navigation-heading,
+                .section-heading {
+                    font-size: 20px;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+
+        .about-list {
+            li {
+                margin-bottom: 25px;
+
+                a {
+                    font-size: 42px;
+                    padding: 8px 0;
+                }
+            }
+        }
+
+        .team-image-section {
+            margin: 15px 0;
+
+            .team-image {
+                max-width: 100%;
+            }
+        }
+
+        .about-footer {
+            padding: 30px 15px;
+            margin-top: 30px;
+
+            .contact-text-wrapper,
+            .contact-text {
+                .contact-heading {
+                    font-size: 24px;
+                }
+
+                .contact-subheading {
+                    font-size: 16px;
+                }
+
+                .contact-link .contact-title {
+                    font-size: 55px;
+                }
+            }
+
+            .contact-details {
+                li {
+                    font-size: 16px;
+                    margin-bottom: 18px;
+
+                    .social-heading {
+                        font-size: 18px;
+                    }
+
+                    .social-links {
+                        gap: 10px;
+
+                        .about-social {
+                            font-size: 14px;
+                            padding: 8px 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Small mobile devices (max-width: 575.98px)
+@media (max-width: 575.98px) {
+    .about-dialog {
+        .about-header {
+            margin: 10px;
+            min-height: 50px;
+
+            .about-brand-logo {
+                width: 60px;
+            }
+
+            .about-close {
+                font-size: 28px;
+                padding: 5px 8px;
+            }
+        }
+
+        .about-main-content {
+            padding: 15px 10px;
+            gap: 25px;
+
+            .main-navigation,
+            .projects-section {
+                .navigation-heading,
+                .section-heading {
+                    font-size: 18px;
+                    margin-bottom: 12px;
+                }
+            }
+        }
+
+        .about-list {
+            li {
+                margin-bottom: 20px;
+
+                a {
+                    font-size: 36px;
+                    padding: 6px 0;
+                }
+            }
+        }
+
+        .about-footer {
+            padding: 25px 10px;
+            margin-top: 25px;
+
+            .contact-text-wrapper,
+            .contact-text {
+                .contact-heading {
+                    font-size: 20px;
+                }
+
+                .contact-subheading {
+                    font-size: 14px;
+                }
+
+                .contact-link .contact-title {
+                    font-size: 48px;
+                }
+            }
+
+            .contact-details {
+                li {
+                    font-size: 14px;
+                    margin-bottom: 15px;
+
+                    .social-links {
+                        flex-direction: column;
+                        gap: 8px;
+
+                        .about-social {
+                            width: 100%;
+                            justify-content: flex-start;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Landscape orientation on mobile
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .about-dialog {
+        .about-main-content {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .about-list {
+            li {
+                margin-bottom: 15px;
+
+                a {
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+}
+
+// High DPI displays
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .about-dialog {
+        .about-brand-logo,
+        .team-image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
     }
 }

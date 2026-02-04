@@ -1,47 +1,97 @@
-<div class="about-dialog">
-    <div class="about-header">
-      <img class="about-brand-logo float-left" (click)="gotHomePage()" src="../assets/alekhan_icon_white.png" />
-      <div class="about-close float-right mr-lg-5" (click)="closeAboutDialog()" style="cursor: pointer;">&#10005;</div>
-    </div>
-    <div class="row">
-      <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
-        <ul class="about-list">
-          <li (click)="openAllProjects('/about-us')">About</li>
-          <!-- <li routerLink="/team">Team</li>      -->
-          <li (click)="openAllProjects('/service')">Service</li>
-        </ul>
-      </div>
-      <div class="col-md-4" [ngClass]="screenWidth < 835 ? 'text-left' : 'my-5'">
-        <ul class="about-list">
-          <li (click)="openAllProjects('/projects')">Projects</li>
-          <!-- <li>Clients</li> -->
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <img class="team-image" src="../assets/about-team-image.jpg" />
-      </div>
-    </div>
-    <div class="row ml-4 mt-5">
-      <div class="col-md-6 mt-5 contact-text pl-0" [ngClass]="screenWidth < 835 ? 'text-left' : 'text-center'">
-        <p>Are you ready for grow your business</p>
-        <h1 routerLink="/contact-us">Contact</h1>
-      </div>
-      <div class="col-md-6 mt-5">
-        <ul class="contact-details">
-          <li>+91 95376 75005</li>
-          <li>
-            <p>"Print House" 3 <sup>rd</sup> Floor,</p>
-            <p>2/10 Bhaktinagar station plot.</p>
-            <p>Rajkot-360 002(Guj). India.</p>
-            <p>info&#64;aalekhanbranding.com</p>
+<div class="about-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+    <header class="about-header">
+      <img class="about-brand-logo float-left" (click)="gotHomePage()" src="../assets/alekhan_icon_white.png" alt="Aalekhan Branding Logo" role="button" tabindex="0" aria-label="Navigate to home page" />
+      <button class="about-close float-right mr-lg-5" (click)="closeAboutDialog()" aria-label="Close menu" type="button">&#10005;</button>
+    </header>
+    
+    <main class="about-main-content">
+      <nav class="main-navigation" role="navigation" aria-label="Main navigation menu">
+        <h1 id="dialog-title" class="sr-only">Navigation Menu</h1>
+        <h2 class="navigation-heading">Navigation</h2>
+        <ul class="about-list" role="list">
+          <li role="listitem">
+            <a (click)="navigateToPage('/', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to home page">
+              <strong>Home</strong>
+            </a>
           </li>
-          <li class="social-handle">
-            <span class="about-social" (click)="openSocialAccount($event,'linked-in')">LinkedIn</span>
-            <span class="about-social" (click)="openSocialAccount($event,'instagram')">Instagram</span>
-            <span class="about-social" (click)="openSocialAccount($event,'pinterest')">Pinterest</span>
-            <span class="about-social" (click)="openSocialAccount($event,'behance')">Behance</span>
+          <li role="listitem">
+            <a (click)="navigateToPage('/service', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to services page">
+              <strong>Service</strong>
+            </a>
+          </li>
+          <li role="listitem">
+            <a (click)="navigateToPage('/about-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to about us page">
+              <strong>About Us</strong>
+            </a>
+          </li>
+          <li role="listitem">
+            <a (click)="navigateToPage('/contact-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to contact us page">
+              <strong>Contact Us</strong>
+            </a>
           </li>
         </ul>
-      </div>
-    </div>
+      </nav>
+      
+      <section class="projects-section">
+        <h2 class="section-heading">Our Work</h2>
+        <ul class="about-list" role="list">
+          <li role="listitem">
+            <a (click)="navigateToPage('/projects', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="View all projects">
+              <strong>Projects</strong>
+            </a>
+          </li>
+        </ul>
+      </section>
+      
+      <section class="team-image-section">
+        <img class="team-image" src="../assets/about-team-image.jpg" alt="Aalekhan Branding team members" />
+      </section>
+    </main>
+    
+    <footer class="about-footer">
+      <section class="contact-section">
+        <div class="contact-text-wrapper" [ngClass]="screenWidth < 835 ? 'text-left' : 'text-center'">
+          <h3 class="contact-heading">Ready to Grow Your Business?</h3>
+          <p class="contact-subheading">Are you ready to grow your business</p>
+          <a (click)="navigateToPage('/contact-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Get in touch with us" class="contact-link">
+            <h2 class="contact-title">Contact</h2>
+          </a>
+        </div>
+        <div class="contact-details-wrapper">
+          <address class="contact-details">
+            <ul role="list">
+              <li role="listitem">
+                <strong>Phone:</strong> <a href="tel:+919537675005" aria-label="Call us at +91 95376 75005">+91 95376 75005</a>
+              </li>
+              <li role="listitem">
+                <strong>Address:</strong>
+                <p>"Print House" 3<sup>rd</sup> Floor,</p>
+                <p>2/10 Bhaktinagar station plot.</p>
+                <p>Rajkot-360 002(Guj). India.</p>
+              </li>
+              <li role="listitem">
+                <strong>Email:</strong> <a href="mailto:info@aalekhanbranding.com" aria-label="Email us at info@aalekhanbranding.com">info&#64;aalekhanbranding.com</a>
+              </li>
+              <li class="social-handle" role="listitem">
+                <h3 class="social-heading">Follow Us</h3>
+                <ul class="social-links" role="list">
+                  <li role="listitem">
+                    <a class="about-social" (click)="openSocialAccount($event,'linked-in')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our LinkedIn profile">LinkedIn</a>
+                  </li>
+                  <li role="listitem">
+                    <a class="about-social" (click)="openSocialAccount($event,'instagram')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our Instagram profile">Instagram</a>
+                  </li>
+                  <li role="listitem">
+                    <a class="about-social" (click)="openSocialAccount($event,'pinterest')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our Pinterest profile">Pinterest</a>
+                  </li>
+                  <li role="listitem">
+                    <a class="about-social" (click)="openSocialAccount($event,'behance')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our Behance profile">Behance</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </address>
+        </div>
+      </section>
+    </footer>
   </div>

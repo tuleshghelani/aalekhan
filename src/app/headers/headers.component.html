@@ -1,22 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-area pt-lg-3">
-    <img class="brand-logo" src="../assets/alekhan_icon_white.png"  (click)="navigateToHome()"/>
-    <!-- <img class="brand-logo" [src]="isHomePage ? '../assets/aalekhan logo icon black.png' : '../assets/aalekhan logo icon white.png'" (click)="navigateToHome()" /> -->
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-nav mx-auto">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage}" routerLink="/">Home</a>
-        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage}" routerLink="/service">Service</a>
-        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage}" routerLink="/about-us" style="cursor: pointer;">About Us</a>
-        <!-- <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage}" routerLink="/team" style="cursor: pointer;">Team</a> -->
-        <a class="nav-item nav-link align-item-center h4 mx-5" [ngClass]="{'service-nav':activePage}" style="cursor: pointer;"
-        routerLink="/contact-us">Contact Us</a>
-      </div>
+<nav class="navbar-area" role="navigation" aria-label="Main navigation">
+    <img class="brand-logo" src="../assets/alekhan_icon_white.png" alt="Aalekhan Branding Logo" (click)="navigateToHome()" />
+    
+    <div class="about-popup" [ngClass]="{'service-nav': activePage}" (click)="openAboutUs()" (keydown.enter)="openAboutUs()" (keydown.space)="openAboutUs()" role="button" aria-label="Open menu" tabindex="0">
+      <h1 class="menu-text">Menu</h1>
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
     </div>
-    <div class="about-popup float-right mr-4 mr-xxl-5 mr-xl-5 mr-lg-5 d-flex" [ngClass]="{'service-nav': activePage}" (click)="openAboutUs()" style="cursor: pointer;color: black;">
-      <h1 style="font-weight: 500;" class="mr-2" routerLink="/about-dialog">Menu</h1>
-      <i class="fa-solid fa-bars" routerLink="/about-dialog"></i></div>
   </nav>
