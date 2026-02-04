@@ -33,6 +33,17 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
     }
   }
 
+  @HostListener('document:touchend', ['$event'])
+  onDocumentTouchEnd(_event: TouchEvent): void {
+    this.clearTouchState();
+  }
+
+  private clearTouchState(): void {
+    this.touchStartTime = 0;
+    this.touchStartX = 0;
+    this.touchStartY = 0;
+  }
+
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     // Prevent body scroll when dialog is open
@@ -58,14 +69,9 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
       event.preventDefault();
       event.stopPropagation();
     }
-    
-    // Close dialog and navigate
-    this.router.navigate([url]).then(() => {
-      // Small delay to ensure smooth transition
-      setTimeout(() => {
-        this.closeAboutDialog();
-      }, 100);
-    });
+    // Navigate to the route; do not call closeAboutDialog() (location.back()) here,
+    // as that would go back in history to /about-dialog and undo the navigation.
+    this.router.navigate([url]);
   }
 
   handleTouchStart(event: TouchEvent): void {
@@ -74,6 +80,10 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
       this.touchStartX = event.touches[0].clientX;
       this.touchStartY = event.touches[0].clientY;
     }
+  }
+
+  handleTouchCancel(): void {
+    this.clearTouchState();
   }
 
   handleTouchEnd(event: TouchEvent): void {

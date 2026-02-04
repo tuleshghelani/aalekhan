@@ -10,22 +10,22 @@
         <h2 class="navigation-heading">Navigation</h2>
         <ul class="about-list" role="list">
           <li role="listitem">
-            <a (click)="navigateToPage('/', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to home page">
+            <a (click)="navigateToPage('/', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Navigate to home page">
               <strong>Home</strong>
             </a>
           </li>
           <li role="listitem">
-            <a (click)="navigateToPage('/service', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to services page">
+            <a (click)="navigateToPage('/service', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Navigate to services page">
               <strong>Service</strong>
             </a>
           </li>
           <li role="listitem">
-            <a (click)="navigateToPage('/about-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to about us page">
+            <a (click)="navigateToPage('/about-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Navigate to about us page">
               <strong>About Us</strong>
             </a>
           </li>
           <li role="listitem">
-            <a (click)="navigateToPage('/contact-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Navigate to contact us page">
+            <a (click)="navigateToPage('/contact-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Navigate to contact us page">
               <strong>Contact Us</strong>
             </a>
           </li>
@@ -36,7 +36,7 @@
         <h2 class="section-heading">Our Work</h2>
         <ul class="about-list" role="list">
           <li role="listitem">
-            <a (click)="navigateToPage('/projects', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="View all projects">
+            <a (click)="navigateToPage('/projects', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="View all projects">
               <strong>Projects</strong>
             </a>
           </li>
@@ -53,7 +53,7 @@
         <div class="contact-text-wrapper" [ngClass]="screenWidth < 835 ? 'text-left' : 'text-center'">
           <h3 class="contact-heading">Ready to Grow Your Business?</h3>
           <p class="contact-subheading">Are you ready to grow your business</p>
-          <a (click)="navigateToPage('/contact-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Get in touch with us" class="contact-link">
+          <a (click)="navigateToPage('/contact-us', $event)" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Get in touch with us" class="contact-link">
             <h2 class="contact-title">Contact</h2>
           </a>
         </div>
@@ -76,16 +76,16 @@
                 <h3 class="social-heading">Follow Us</h3>
                 <ul class="social-links" role="list">
                   <li role="listitem">
-                    <a class="about-social" (click)="openSocialAccount($event,'linked-in')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our LinkedIn profile">LinkedIn</a>
+                    <a class="about-social" (click)="openSocialAccount($event,'linked-in')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Visit our LinkedIn profile">LinkedIn</a>
                   </li>
                   <li role="listitem">
-                    <a class="about-social" (click)="openSocialAccount($event,'instagram')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our Instagram profile">Instagram</a>
+                    <a class="about-social" (click)="openSocialAccount($event,'instagram')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Visit our Instagram profile">Instagram</a>
                   </li>
                   <li role="listitem">
-                    <a class="about-social" (click)="openSocialAccount($event,'pinterest')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our Pinterest profile">Pinterest</a>
+                    <a class="about-social" (click)="openSocialAccount($event,'pinterest')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Visit our Pinterest profile">Pinterest</a>
                   </li>
                   <li role="listitem">
-                    <a class="about-social" (click)="openSocialAccount($event,'behance')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" role="link" tabindex="0" aria-label="Visit our Behance profile">Behance</a>
+                    <a class="about-social" (click)="openSocialAccount($event,'behance')" (touchstart)="handleTouchStart($event)" (touchend)="handleTouchEnd($event)" (touchcancel)="handleTouchCancel()" role="link" tabindex="0" aria-label="Visit our Behance profile">Behance</a>
                   </li>
                 </ul>
               </li>

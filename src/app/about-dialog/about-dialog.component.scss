@@ -105,19 +105,24 @@
         }
     }
 
-    // Navigation lists
+    // Navigation lists - flex + gap prevents margin collapse and overlap
     .about-list {
         list-style-type: none;
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
 
         li {
-            margin-bottom: 30px;
+            position: relative;
+            margin: 0;
 
             a {
                 display: block;
                 font-size: 48px;
                 font-weight: 800;
+                line-height: 1.25;
                 color: whitesmoke;
                 cursor: pointer;
                 transition: all 0.3s ease;
@@ -140,7 +145,7 @@
                 }
 
                 &:active {
-                    transform: scale(0.98);
+                    opacity: 0.9;
                 }
             }
         }
@@ -217,7 +222,7 @@
                     }
 
                     &:active {
-                        transform: scale(0.98);
+                        opacity: 0.9;
                     }
                 }
             }
@@ -327,57 +332,56 @@
 @media (min-width: 768px) {
     .about-dialog {
         .about-header {
-            margin: 30px 40px;
-            min-height: 100px;
+            margin: 24px 32px;
+            min-height: 80px;
 
             .about-brand-logo {
-                width: 100px;
+                width: 90px;
             }
 
             .about-close {
-                font-size: 44px;
+                font-size: 38px;
             }
         }
 
         .about-main-content {
-            padding: 40px;
+            padding: 32px 40px;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: 60px;
+            gap: 40px;
 
             .main-navigation,
             .projects-section {
-                flex: 0 0 calc(33.333% - 40px);
-                min-width: 250px;
+                flex: 0 0 calc(33.333% - 32px);
+                min-width: 220px;
 
                 .navigation-heading,
                 .section-heading {
-                    font-size: 28px;
+                    font-size: 24px;
+                    margin-bottom: 16px;
                 }
             }
 
             .team-image-section {
-                flex: 0 0 calc(33.333% - 40px);
-                min-width: 250px;
+                flex: 0 0 calc(33.333% - 32px);
+                min-width: 220px;
             }
         }
 
         .about-list {
-            li {
-                margin-bottom: 40px;
+            gap: 24px;
 
-                a {
-                    font-size: 65px;
-                }
+            li a {
+                font-size: 48px;
             }
         }
 
         .about-footer {
-            padding: 60px 40px;
+            padding: 40px 40px;
 
         .contact-section {
             flex-direction: row;
-            gap: 60px;
+            gap: 40px;
         }
 
         .contact-text-wrapper,
@@ -385,15 +389,15 @@
             flex: 0 0 50%;
 
             .contact-heading {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .contact-subheading {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .contact-link .contact-title {
-                font-size: 85px;
+                font-size: 56px;
             }
         }
 
@@ -403,7 +407,7 @@
 
         .contact-details {
             li {
-                font-size: 20px;
+                font-size: 18px;
             }
         }
         }
@@ -414,40 +418,38 @@
 @media (min-width: 1024px) {
     .about-dialog {
         .about-main-content {
-            padding: 60px 80px;
+            padding: 40px 56px;
 
             .main-navigation,
             .projects-section {
-                flex: 0 0 calc(25% - 60px);
+                flex: 0 0 calc(25% - 40px);
 
                 .navigation-heading,
                 .section-heading {
-                    font-size: 32px;
+                    font-size: 26px;
+                    margin-bottom: 14px;
                 }
             }
 
             .team-image-section {
-                flex: 0 0 calc(25% - 60px);
+                flex: 0 0 calc(25% - 40px);
             }
         }
 
         .about-list {
-            li {
-                margin-bottom: 60px;
+            gap: 28px;
 
-                a {
-                    font-size: 85px;
-                }
+            li a {
+                font-size: 52px;
             }
         }
 
         .about-footer {
-            padding: 80px 80px;
+            padding: 48px 56px;
 
-            .contact-text {
-                .contact-link .contact-title {
-                    font-size: 105px;
-                }
+            .contact-text-wrapper .contact-link .contact-title,
+            .contact-text .contact-link .contact-title {
+                font-size: 64px;
             }
         }
     }
@@ -457,17 +459,15 @@
 @media (min-width: 1200px) {
     .about-dialog {
         .about-main-content {
-            padding: 80px 100px;
-            gap: 80px;
+            padding: 48px 64px;
+            gap: 48px;
         }
 
         .about-list {
-            li {
-                margin-bottom: 95px;
+            gap: 32px;
 
-                a {
-                    font-size: 95px;
-                }
+            li a {
+                font-size: 56px;
             }
         }
     }
@@ -506,13 +506,11 @@
         }
 
         .about-list {
-            li {
-                margin-bottom: 25px;
+            gap: 28px;
 
-                a {
-                    font-size: 42px;
-                    padding: 8px 0;
-                }
+            li a {
+                font-size: 42px;
+                padding: 8px 0;
             }
         }
 
@@ -598,13 +596,11 @@
         }
 
         .about-list {
-            li {
-                margin-bottom: 20px;
+            gap: 24px;
 
-                a {
-                    font-size: 36px;
-                    padding: 6px 0;
-                }
+            li a {
+                font-size: 36px;
+                padding: 6px 0;
             }
         }
 
@@ -656,12 +652,10 @@
         }
 
         .about-list {
-            li {
-                margin-bottom: 15px;
+            gap: 16px;
 
-                a {
-                    font-size: 32px;
-                }
+            li a {
+                font-size: 32px;
             }
         }
     }
