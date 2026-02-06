@@ -326,6 +326,7 @@ export class HomeV2Component implements OnInit, OnDestroy, AfterViewInit {
     this.ctx.clearRect(0, 0, w, h);
     this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
     this.ctx.lineWidth = 1;
+
     for (const box of this.boxes) {
       box.rotX += box.speedX;
       box.rotY += box.speedY;
