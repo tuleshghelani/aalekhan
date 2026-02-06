@@ -130,7 +130,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   containerWidth: number = 0;
   textWidth: number = 0;
 
-
   @ViewChild('galleryContainer') galleryContainerRef: ElementRef | undefined;
   private galleryContainer: HTMLElement | null = null;
   private isGalleryActive: boolean = false;
